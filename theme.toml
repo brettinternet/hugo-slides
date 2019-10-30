@@ -1,0 +1,13 @@
+baseURL = "http://brettinternet.com/notes/"
+languageCode = "en-us"
+license = "MIT"
+name = "Presentation"
+tags = []
+features = []
+
+[taxonomies]
+  tag = "tags"
+
+[author]
+  name = "@brettinternet"
+  homepage = "https://brettinternet.com"

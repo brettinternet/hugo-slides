@@ -1,0 +1,10 @@
+baseURL: "https://brettinternet.com/hugo-slides/"
+title: "Slides"
+description: "A simple directory for your Reveal.js slides"
+
+params:
+  author:
+    name: "@brettinternet"
+    homepage: "https://brettinternet.com"
+  revealjs:
+    hash: true

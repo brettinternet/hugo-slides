@@ -1,0 +1,6 @@
+{{ define "main" }}
+<header>
+  <h1>{{ lower .Site.Title }}</h1>
+</header>
+{{ partial "content.html" .Site.RegularPages }}
+{{ end }}

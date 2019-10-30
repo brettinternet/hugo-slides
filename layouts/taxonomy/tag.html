@@ -1,0 +1,12 @@
+{{ define "main" }}
+<header>
+  <h1>
+    <a href="{{ .Site.BaseURL }}">{{ lower .Site.Title }}</a>/<a
+      href="{{ .Site.BaseURL }}{{ .Type | urlize }}">tags</a>/{{ .Title }}
+    {{ if gt .Data.Count 1 }}
+    ({{ .Data.Count }})
+    {{ end }}
+  </h1>
+</header>
+{{ partial "content.html" .Data.Pages  }}
+{{ end }}

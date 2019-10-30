@@ -1,0 +1,44 @@
+{{ $object_assign := resources.Get "js/object-assign.js" | minify | fingerprint }}
+<script type="text/javascript" src={{ $object_assign.RelPermalink }}></script>
+{{ $revealjs := resources.Get "reveal-js/js/reveal.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $revealjs.RelPermalink }}"></script>
+<script type="text/javascript">
+  // Hugo makes params lowercase, so we must store in snake and convert
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function (k) {
+        newK = k.replace(/(\_\w)/g, function (m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  var revealHugoSiteParams = JSON.parse({{ jsonify .Site.Params.revealjs | safeJS }});
+  var revealHugoPageParams = JSON.parse({{ jsonify .Page.Params.revealjs | safeJS }});
+  console.log('revealHugoSiteParams: ', revealHugoSiteParams, revealHugoPageParams);
+  var options = Object.assign({},
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+{{ $marked := resources.Get "reveal-js/plugin/markdown/marked.js" }}
+{{ $markdown := resources.Get "reveal-js/plugin/markdown/markdown.js" }}
+{{ $highlight := resources.Get "reveal-js/plugin/highlight/highlight.js" }}
+{{ $zoom := resources.Get "reveal-js/plugin/zoom-js/zoom.js" }}
+{{ $notes := resources.Get "reveal-js/plugin/notes/notes.js" }}
+{{ $plugins := slice $marked $markdown $highlight $zoom $notes | resources.Concat "js/plugins.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $plugins.RelPermalink }}"></script>
+
+<!-- {{ $reveal_location := "reveal-js" }}
+<a href="{{ printf "%s/css/print/" $reveal_location | relURL }}" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script> -->

@@ -1,0 +1,38 @@
+<table class="directory">
+  <thead>
+    <tr>
+      <th>lastmod</th>
+      <th>name</th>
+      <th>subject</th>
+      <th>tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range . }}
+    <tr>
+      <td>
+        <time>{{ dateFormat "Jan 2, 2006 15:04:05 MST" .Lastmod }}</time>
+      </td>
+      <td class="filepath">
+        <a href="{{ .URL }}">{{.File}}</a>
+      </td>
+      <td>
+        <i>
+          {{ with .Description }}
+          {{ . }}
+          {{ else }}
+          {{ .Summary}}
+          {{ end }}
+        </i>
+      </td>
+      <td>
+        {{ if .Params.tags }}
+        {{ range .Params.tags }}
+        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{end}}
+        {{ end }}
+      </td>
+    </tr>
+    {{ end }}
+  </tbody>
+</table>

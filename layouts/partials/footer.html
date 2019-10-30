@@ -1,0 +1,11 @@
+<footer>
+  {{ if .Site.Params.Author.Homepage }}
+  <a href="{{ .Site.Params.Author.Homepage }}">
+    {{ if .Site.Params.Author.Name }}
+    {{ .Site.Params.Author.Name }}
+    {{ else }}
+    {{ .Site.Title }}
+    {{ end }}
+  </a>
+  {{ end }}
+</footer>

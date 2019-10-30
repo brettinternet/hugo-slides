@@ -1,0 +1,14 @@
+{{ $reset := resources.Get "reveal-js/css/reset.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $reset.RelPermalink }}">
+
+{{ $reveal := resources.Get "reveal-js/css/reveal.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $reveal.RelPermalink }}">
+
+{{ $theme := resources.Get "reveal-js/css/theme/black.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $theme.RelPermalink }}">
+
+{{ $highlight_theme := resources.Get "highlight-js/default.min.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $highlight_theme.RelPermalink }}">
+
+{{ $font := resources.Get "reveal-js/lib/font/source-sans-pro/source-sans-pro.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $font.RelPermalink }}">

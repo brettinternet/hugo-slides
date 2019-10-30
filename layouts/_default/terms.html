@@ -1,0 +1,18 @@
+{{ define "main" }}
+<header>
+  <h1>
+    <a href="{{ .Site.BaseURL }}">
+      {{ lower .Site.Title }}
+    </a>/{{ lower .Title }}
+  </h1>
+</header>
+
+<ul>
+  {{ $data := .Data }}
+  {{ range .Data.Terms.Alphabetical }}
+  <li>
+    <a href="{{ .Name | urlize }}">{{ .Name }}</a> {{ .Count }}
+  </li>
+  {{ end }}
+</ul>
+{{end}}

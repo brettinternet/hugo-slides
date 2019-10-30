@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ with.Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+{{ partial "head.html" . }}
+{{ partial "theme" . }}
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      {{ partial "markdown" . }}
+    </div>
+  </div>
+
+  {{ partial "javascript" . }}
+</body>
+
+</html>

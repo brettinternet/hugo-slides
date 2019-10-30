@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ with.Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+{{ partial "head.html" . }}
+
+{{ $main := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $main.RelPermalink }}">
+
+<body>
+  <main>
+    {{ block "main" . }}
+    {{ end }}
+  </main>
+
+  {{ partial "footer" . }}
+</body>
+
+</html>
