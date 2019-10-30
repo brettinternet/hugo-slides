@@ -1,3 +1,3 @@
 # Hugo Talks
 
-A place for your slides in markdown.
+A simple directory for your Reveal.js slides.

@@ -1,7 +1,7 @@
-baseURL = "http://brettinternet.com/notes/"
+baseURL = "http://brettinternet.com/hugo-slides/"
 languageCode = "en-us"
 license = "MIT"
-name = "Presentation"
+name = "Hugo Slides"
 tags = []
 features = []
 
