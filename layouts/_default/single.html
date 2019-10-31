@@ -4,11 +4,13 @@
 {{ partial "theme" . }}
 
 <body>
-  <div class="reveal">
+  <div id="reveal" class="reveal">
     <div class="slides">
       {{ partial "markdown" .RawContent }}
     </div>
   </div>
+
+  {{ partial "branding" . }}
 
   {{ partial "javascript" . }}
 </body>

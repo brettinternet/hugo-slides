@@ -1,0 +1,22 @@
+#header-left {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  margin: 1rem;
+}
+
+#header-left img {
+  height: 25px;
+  width: 25px;
+}
+
+#header-right {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+#footer-left {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+}

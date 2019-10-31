@@ -24,6 +24,30 @@
     camelize(revealHugoSiteParams),
     camelize(revealHugoPageParams));
   Reveal.initialize(options);
+  const reveal = document.getElementById('reveal')
+  reveal.style.opacity = '0';
+  Reveal.addEventListener('ready', function (event) {
+    Reveal.slide(0, 0, 0, 0);
+    setTimeout(function () {
+      reveal.style.transition = 'opacity 500ms';
+      reveal.style.opacity = '1';
+    }, 500);
+  });
+
+  var header = document.getElementById('header');
+  if (window.location.search.match(/print-pdf/gi)) {
+    Reveal.addEventListener('ready', function (event) {
+      document.getElementsByClassName('slide-background')[0].appendChild(header);
+    });
+  }
+  else {
+    document.getElementById('reveal').appendChild(header);
+  }
+
+  document.getElementById('header-left').addEventListener("click", function () {
+    console.log('hi')
+    Reveal.getPlugin('notes').open()
+  })
 </script>
 
 {{ $baseUrl := .Site.BaseURL }}
