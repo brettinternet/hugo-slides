@@ -24,7 +24,6 @@
     camelize(revealHugoSiteParams),
     camelize(revealHugoPageParams));
   Reveal.initialize(options);
-  setTimeout(function () { Reveal.slide(0, 0, 0, 0); }, 0);
 </script>
 
 {{ $baseUrl := .Site.BaseURL }}
@@ -33,6 +32,7 @@
 {{ $highlight := "reveal-js/plugin/highlight/highlight.js" }}
 {{ $zoom := "reveal-js/plugin/zoom-js/zoom.js" }}
 {{ $notes := "reveal-js/plugin/notes/notes.js" }}
-{{ range slice $marked $markdown $highlight $zoom $notes }}
+{{ $math := "reveal-js/plugin/math/math.js" }}
+{{ range slice $marked $markdown $highlight $zoom $notes $math }}
 <script type="text/javascript" src="{{ $baseUrl }}{{ . }}"></script>
 {{ end }}
