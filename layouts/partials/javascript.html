@@ -1,7 +1,9 @@
 {{ $object_assign := resources.Get "js/object-assign.js" | minify | fingerprint }}
 <script type="text/javascript" src={{ $object_assign.RelPermalink }}></script>
-{{ $revealjs := resources.Get "reveal-js/js/reveal.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $revealjs.RelPermalink }}"></script>
+
+{{ $revealjs := "reveal-js/js/reveal.js" }}
+<script type="text/javascript" src="{{ .Site.BaseURL }}{{ $revealjs }}"></script>
+
 <script type="text/javascript">
   // Hugo makes params lowercase, so we must store in snake and convert
   function camelize(map) {
@@ -16,21 +18,24 @@
     }
     return map;
   }
-  var revealHugoSiteParams = JSON.parse({{ jsonify .Site.Params.revealjs | safeJS }});
-  var revealHugoPageParams = JSON.parse({{ jsonify .Page.Params.revealjs | safeJS }});
+  var revealHugoSiteParams = JSON.parse({{ .Site.Params.revealjs | jsonify }});
+  var revealHugoPageParams = JSON.parse({{ .Page.Params.revealjs | jsonify }});
   console.log('revealHugoSiteParams: ', revealHugoSiteParams, revealHugoPageParams);
   var options = Object.assign({},
     camelize(revealHugoSiteParams),
     camelize(revealHugoPageParams));
   Reveal.initialize(options);
 </script>
-{{ $marked := resources.Get "reveal-js/plugin/markdown/marked.js" }}
-{{ $markdown := resources.Get "reveal-js/plugin/markdown/markdown.js" }}
-{{ $highlight := resources.Get "reveal-js/plugin/highlight/highlight.js" }}
-{{ $zoom := resources.Get "reveal-js/plugin/zoom-js/zoom.js" }}
-{{ $notes := resources.Get "reveal-js/plugin/notes/notes.js" }}
-{{ $plugins := slice $marked $markdown $highlight $zoom $notes | resources.Concat "js/plugins.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $plugins.RelPermalink }}"></script>
+
+{{ $baseUrl := .Site.BaseURL }}
+{{ $marked := "reveal-js/plugin/markdown/marked.js" }}
+{{ $markdown := "reveal-js/plugin/markdown/markdown.js" }}
+{{ $highlight := "reveal-js/plugin/highlight/highlight.js" }}
+{{ $zoom := "reveal-js/plugin/zoom-js/zoom.js" }}
+{{ $notes := "reveal-js/plugin/notes/notes.js" }}
+{{ range slice $marked $markdown $highlight $zoom $notes }}
+<script type="text/javascript" src="{{ $baseUrl }}{{ . }}"></script>
+{{ end }}
 
 <!-- {{ $reveal_location := "reveal-js" }}
 <a href="{{ printf "%s/css/print/" $reveal_location | relURL }}" id="print-location" style="display: none;"></a>
