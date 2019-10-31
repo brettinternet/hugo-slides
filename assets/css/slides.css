@@ -9,6 +9,7 @@
   position: absolute;
   top: 0%;
   left: 0%;
+  margin: 1rem;
 }
 
 #header-right {
@@ -20,12 +21,7 @@
   position: absolute;
   bottom: 0%;
   left: 0%;
-}
-
-#header-left,
-#header-right,
-#footer-left {
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 .flex-row {
