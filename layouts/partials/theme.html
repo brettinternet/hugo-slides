@@ -9,3 +9,6 @@
 
 {{ $highlight_theme := resources.Get "highlight-js/default.min.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $highlight_theme.RelPermalink }}">
+
+{{ $print := "reveal-js/css/print/paper.css" }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $print }}">

@@ -4,6 +4,8 @@ date: 2019-10-27T22:40:07-06:00
 description: "A fancy poem"
 draft: false
 tags: ["javascript", "tech"]
+revealjs:
+  slide_number: true
 ---
 
 # If by Rudyard Kipling
@@ -35,3 +37,7 @@ And stoop and build ’em up with worn-out tools:
 --
 
 Okay well that's dope
+
+---
+
+Fin.

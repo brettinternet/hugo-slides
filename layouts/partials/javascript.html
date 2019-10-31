@@ -20,7 +20,6 @@
   }
   var revealHugoSiteParams = JSON.parse({{ .Site.Params.revealjs | jsonify }});
   var revealHugoPageParams = JSON.parse({{ .Page.Params.revealjs | jsonify }});
-  console.log('revealHugoSiteParams: ', revealHugoSiteParams, revealHugoPageParams);
   var options = Object.assign({},
     camelize(revealHugoSiteParams),
     camelize(revealHugoPageParams));
@@ -36,14 +35,3 @@
 {{ range slice $marked $markdown $highlight $zoom $notes }}
 <script type="text/javascript" src="{{ $baseUrl }}{{ . }}"></script>
 {{ end }}
-
-<!-- {{ $reveal_location := "reveal-js" }}
-<a href="{{ printf "%s/css/print/" $reveal_location | relURL }}" id="print-location" style="display: none;"></a>
-<script type="text/javascript">
-  var printLocationElement = document.getElementById('print-location');
-  var link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.type = 'text/css';
-  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
-  document.getElementsByTagName('head')[0].appendChild(link);
-</script> -->
