@@ -18,7 +18,7 @@ body {
 }
 
 main {
-  padding: 1rem;
+  padding: 0.5rem;
   flex-grow: 1;
 }
 
@@ -52,11 +52,12 @@ table.directory thead {
 }
 
 table.directory thead th,
-table.directory td {
+table.directory .fields td {
   padding: 0.5rem;
 }
 
 table.directory time {
+  white-space: nowrap;
   color: slategray;
   font-size: 0.7rem;
 }
@@ -70,4 +71,30 @@ table.directory .filepath {
 table.directory .tag {
   display: inline-block;
   margin-right: 0.25rem;
+}
+
+table.directory .desktop-cell {
+  display: none;
+}
+
+table.directory .mobile-row {
+  display: table-row;
+}
+
+.mobile-subject {
+  padding-bottom: 1rem;
+}
+
+@media only screen and (min-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+
+  table.directory .desktop-cell {
+    display: table-cell;
+  }
+
+  table.directory .mobile-row {
+    display: none;
+  }
 }

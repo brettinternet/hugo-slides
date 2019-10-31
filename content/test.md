@@ -1,7 +1,8 @@
 ---
 title: "Improving our hiring process"
 date: 2019-10-27T22:40:07-06:00
-description: "A fancy poem"
+description: "If you can keep your head when all about you  
+Are losing theirs and blaming it on you"
 draft: false
 tags: ["javascript", "tech"]
 revealjs:
@@ -17,7 +18,9 @@ Note: Yes, this is very cool
 
 ---
 
-If you can keep your head when all about you  
+See notes.
+
+Note: If you can keep your head when all about you  
 Are losing theirs and blaming it on you,  
 If you can trust yourself when all men doubt you,  
 But make allowance for their doubting too;  

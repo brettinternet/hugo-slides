@@ -3,20 +3,20 @@
     <tr>
       <th>lastmod</th>
       <th>name</th>
-      <th>subject</th>
+      <th class="desktop-cell">subject</th>
       <th>tags</th>
     </tr>
   </thead>
   <tbody>
     {{ range . }}
-    <tr>
+    <tr class="fields">
       <td>
-        <time>{{ dateFormat "Jan 2, 2006 15:04:05 MST" .Lastmod }}</time>
+        <time>{{ dateFormat "Jan 2, 2006" .Lastmod }}</time>
       </td>
       <td class="filepath">
         <a href="{{ .URL }}">{{.File}}</a>
       </td>
-      <td>
+      <td class="desktop-cell">
         <i>
           {{ with .Description }}
           {{ . }}
@@ -31,6 +31,19 @@
         <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
         {{end}}
         {{ end }}
+      </td>
+    </tr>
+
+    <tr class="mobile-row">
+      <td></td>
+      <td colspan="2" class="mobile-subject">
+        <i>
+          {{ with .Description }}
+          {{ . }}
+          {{ else }}
+          {{ .Summary}}
+          {{ end }}
+        </i>
       </td>
     </tr>
     {{ end }}
