@@ -10,12 +10,12 @@ revealjs:
 
 # If by Rudyard Kipling
 
-When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 Note: Yes, this is very cool
 
---
+---
 
 If you can keep your head when all about you  
 Are losing theirs and blaming it on you,  
@@ -26,7 +26,7 @@ Or being lied about, don’t deal in lies,
 Or being hated, don’t give way to hating,  
 And yet don’t look too good, nor talk too wise:
 
----
+--
 
 If you can dream—and not make dreams your master;  
 If you can think—and not make thoughts your aim;  

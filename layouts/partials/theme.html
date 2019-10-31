@@ -4,7 +4,7 @@
 {{ $reveal := "reveal-js/css/reveal.css" }}
 <link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reveal }}">
 
-{{ $theme := "reveal-js/css/theme/black.css" }}
+{{ $theme := "reveal-js/css/theme/white.css" }}
 <link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $theme }}">
 
 {{ $highlight_theme := resources.Get "highlight-js/default.min.css" | minify | fingerprint }}

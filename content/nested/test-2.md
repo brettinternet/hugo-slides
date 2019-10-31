@@ -6,6 +6,16 @@ description: "Here's another poem!"
 tags: ["tech"]
 ---
 
+&
+
+```
+&
+
+&amp;
+```
+
+---
+
 If you can make one heap of all your winnings  
 And risk it on one turn of pitch-and-toss,  
 And lose, and start again at your beginnings  
@@ -32,8 +42,14 @@ And—which is more—you’ll be a Man, my son!
 const a = "okay";
 
 try {
-  get(a);
+  if (a > 1) {
+    get(a);
+  }
 } catch (err) {
   handle(err);
 }
 ```
+
+--
+
+okay coolio

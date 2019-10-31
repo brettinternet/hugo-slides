@@ -1,9 +1,5 @@
 <section data-markdown data-separator="^\r?\n---\r?\n$" data-separator-vertical="^\r?\n--\r?\n$"
   data-separator-notes="^Note:">
-  <script type="text/template">
-    {{ . }}
-  </script>
-  <script>
-    console.log({{ . }});
-  </script>
+  <script id="reveal-content" type="text/template"></script>
 </section>
+<div id="content" data-content="{{ . }}"></div>
