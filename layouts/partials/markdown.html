@@ -4,6 +4,10 @@
     {{ . }}
   </script>
   <script>
-    setTimeout(function () { window.Reveal.slide(0, 0, 0, 0) }, 0)
+    window.onload = function () {
+      if (window.Reveal) {
+        window.Reveal.slide(0, 0, 0, 0);
+      };
+    };
   </script>
 </section>
