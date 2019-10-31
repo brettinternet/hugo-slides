@@ -1,10 +1,41 @@
 <div style="display:none;" aria-hidden="true">
-  <div id="header">
+  <div id="header" class="no-print">
     <div id="header-left">
-      {{ $logo := resources.Get "images/logo.png" }}
-      <img src="{{ $logo.RelPermalink }}" alt="logo" />
+      <!-- {{ $logo := resources.Get "images/logo.png" }}
+      <div class="logo">
+        <img src="{{ $logo.RelPermalink }}" alt="logo" />
+      </div> -->
+      <div class="flex-column">
+        <div class="author">
+          {{ if .Site.Params.Author.Homepage }}
+          <a href="{{ .Site.Params.Author.Homepage }}" target="__blank" rel="noopener noreferrer">
+            {{ if .Site.Params.Author.Name }}
+            {{ .Site.Params.Author.Name }}
+            {{ else }}
+            {{ .Site.Title }}
+            {{ end }}
+          </a>
+          {{ end }}
+        </div>
+        <div class="title">
+          {{ .Title }}
+        </div>
+      </div>
     </div>
-    <!-- <div id="header-right">HEADER-RIGHT</div>
-    <div id="footer-left">FOOTER-LEFT</div> -->
+    <!-- <div id="header-right">HEADER-RIGHT</div> -->
+    <div id="footer-left">
+      <button id="open-notes" aria-label="Open presentation notes">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+      </button>
+    </div>
   </div>
+</div>
 </div>

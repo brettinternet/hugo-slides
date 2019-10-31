@@ -1,54 +1,16 @@
 {{ $object_assign := resources.Get "js/object-assign.js" | minify | fingerprint }}
-<script type="text/javascript" src={{ $object_assign.RelPermalink }}></script>
+<script type="text/javascript" src="{{ $object_assign.RelPermalink }}"></script>
 
 {{ $revealjs := "reveal-js/js/reveal.js" }}
 <script type="text/javascript" src="{{ .Site.BaseURL }}{{ $revealjs }}"></script>
 
 <script type="text/javascript">
-  // Hugo makes params lowercase, so we must store in snake and convert
-  function camelize(map) {
-    if (map) {
-      Object.keys(map).forEach(function (k) {
-        newK = k.replace(/(\_\w)/g, function (m) { return m[1].toUpperCase() });
-        if (newK != k) {
-          map[newK] = map[k];
-          delete map[k];
-        }
-      });
-    }
-    return map;
-  }
   var revealHugoSiteParams = JSON.parse({{ .Site.Params.revealjs | jsonify }});
   var revealHugoPageParams = JSON.parse({{ .Page.Params.revealjs | jsonify }});
-  var options = Object.assign({},
-    camelize(revealHugoSiteParams),
-    camelize(revealHugoPageParams));
-  Reveal.initialize(options);
-  const reveal = document.getElementById('reveal')
-  reveal.style.opacity = '0';
-  Reveal.addEventListener('ready', function (event) {
-    Reveal.slide(0, 0, 0, 0);
-    setTimeout(function () {
-      reveal.style.transition = 'opacity 500ms';
-      reveal.style.opacity = '1';
-    }, 500);
-  });
-
-  var header = document.getElementById('header');
-  if (window.location.search.match(/print-pdf/gi)) {
-    Reveal.addEventListener('ready', function (event) {
-      document.getElementsByClassName('slide-background')[0].appendChild(header);
-    });
-  }
-  else {
-    document.getElementById('reveal').appendChild(header);
-  }
-
-  document.getElementById('header-left').addEventListener("click", function () {
-    console.log('hi')
-    Reveal.getPlugin('notes').open()
-  })
 </script>
+
+{{ $main := resources.Get "js/main.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $main.RelPermalink }}"></script>
 
 {{ $baseUrl := .Site.BaseURL }}
 {{ $marked := "reveal-js/plugin/markdown/marked.js" }}
