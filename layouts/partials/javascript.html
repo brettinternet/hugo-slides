@@ -24,6 +24,7 @@
     camelize(revealHugoSiteParams),
     camelize(revealHugoPageParams));
   Reveal.initialize(options);
+  setTimeout(function () { Reveal.slide(0, 0, 0, 0); }, 0);
 </script>
 
 {{ $baseUrl := .Site.BaseURL }}
