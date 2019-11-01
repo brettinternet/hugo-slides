@@ -6,5 +6,9 @@ params:
   author:
     name: "@brettinternet"
     homepage: "https://brettinternet.com"
+  highlightjs:
+    theme: "solarized-dark"
   revealjs:
     hash: true
+    theme: "solarized"
+    pdfMaxPagesPerSlide: 1

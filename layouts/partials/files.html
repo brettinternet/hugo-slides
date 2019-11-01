@@ -1,0 +1,51 @@
+<table class="directory">
+  <thead>
+    <tr>
+      <th>lastmod</th>
+      <th>name</th>
+      <th class="desktop-cell">subject</th>
+      <th>tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range . }}
+    <tr class="fields">
+      <td>
+        <time>{{ dateFormat "Jan 2, 2006" .Lastmod }}</time>
+      </td>
+      <td class="filepath">
+        <a href="{{ .URL }}">{{.File}}</a>
+      </td>
+      <td class="desktop-cell">
+        <i>
+          {{ with .Description }}
+          {{ . }}
+          {{ else }}
+          {{ .Summary}}
+          {{ end }}
+        </i>
+      </td>
+      <td>
+        {{ if .Params.tags }}
+        {{ range .Params.tags }}
+        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{end}}
+        {{ end }}
+      </td>
+    </tr>
+
+    <tr class="mobile-row">
+      <td></td>
+      <td colspan="2" class="mobile-subject">
+        <i>
+          {{ with .Description }}
+          {{ . }}
+          {{ else }}
+          {{ .Summary}}
+          {{ end }}
+        </i>
+      </td>
+    </tr>
+    {{ end }}
+  </tbody>
+</table>

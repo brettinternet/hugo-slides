@@ -6,10 +6,23 @@ Are losing theirs and blaming it on you"
 draft: false
 tags: ["javascript", "tech"]
 revealjs:
+  theme: "blood"
   slide_number: true
 ---
 
+[![Audi R8](http://img.youtube.com/vi/KOxbO0EI4MA/0.jpg)](https://www.youtube.com/watch?v=KOxbO0EI4MA "Audi R8")
+
+---
+
+okay
+
+<section data-background-iframe="https://www.youtube.com/embed/sGF6bOi1NfA"></section>
+
+---
+
 # If by Rudyard Kipling
+
+---
 
 When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
 $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$

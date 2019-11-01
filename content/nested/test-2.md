@@ -6,13 +6,19 @@ description: "Here's another poem!"
 tags: ["tech"]
 ---
 
-&
+Hi, I'm Brett Internet
 
-```
-&
+![logo](/static/images/logo.png)
 
-&amp;
-```
+<img src="/static/images/logo.png" alt="logo" />
+
+--
+
+<section data-autoslide="2000">
+	<p>After 2 seconds the first fragment will be shown.</p>
+	<p class="fragment" data-autoslide="10000">After 10 seconds the next fragment will be shown.</p>
+	<p class="fragment">Now, the fragment is displayed for 2 seconds before the next slide is shown.</p>
+</section>
 
 ---
 
@@ -35,6 +41,8 @@ If you can fill the unforgiving minute
 With sixty seconds’ worth of distance run,  
 Yours is the Earth and everything that’s in it,  
 And—which is more—you’ll be a Man, my son!
+
+[Link to second slide](#/0/1)
 
 ---
 

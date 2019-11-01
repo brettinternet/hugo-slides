@@ -6,11 +6,11 @@
 <body>
   <div id="reveal" class="reveal">
     <div class="slides">
-      {{ partial "markdown" .RawContent }}
+      {{ partial "content" . }}
     </div>
   </div>
 
-  {{ partial "branding" . }}
+  {{ partial "corners" . }}
 
   {{ partial "javascript" . }}
 </body>

@@ -1,16 +1,25 @@
-{{ $object_assign := resources.Get "js/object-assign.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $object_assign.RelPermalink }}"></script>
+{{ $object_assign_js := resources.Get "js/object-assign.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $object_assign_js.RelPermalink }}"></script>
 
-{{ $revealjs := "reveal-js/js/reveal.js" }}
-<script type="text/javascript" src="{{ .Site.BaseURL }}{{ $revealjs }}"></script>
+{{ $revealjs_path := "reveal-js/js/reveal.js" }}
+<script type="text/javascript" src="{{ .Site.BaseURL }}{{ $revealjs_path }}"></script>
 
 <script type="text/javascript">
-  var revealHugoSiteParams = JSON.parse({{ .Site.Params.revealjs | jsonify }});
-  var revealHugoPageParams = JSON.parse({{ .Page.Params.revealjs | jsonify }});
+  var payload = {}
+  payload.revealHugoSiteParams = JSON.parse({{ .Site.Params.revealjs | jsonify }});
+  payload.revealHugoPageParams = JSON.parse({{ .Page.Params.revealjs | jsonify }});
+  payload.baseUrl = {{ .Site.BaseURL }}
 </script>
 
-{{ $main := resources.Get "js/main.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $main.RelPermalink }}"></script>
+{{ $head_js := resources.Get "js/head.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $head_js.RelPermalink }}"></script>
+
+{{ $dom_js := resources.Get "js/dom.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $dom_js.RelPermalink }}"></script>
+
+{{ $main_js := resources.Get "js/main.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $main_js.RelPermalink }}"></script>
+
 
 {{ $baseUrl := .Site.BaseURL }}
 {{ $marked := "reveal-js/plugin/markdown/marked.js" }}

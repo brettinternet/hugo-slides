@@ -8,7 +8,7 @@ A simple directory for your Reveal.js markdown slides. [View demo](https://brett
 
 The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations.
 
-My intent here has been to avoid Hugo's shortcodes and fragments except for HTML. Markdown and HTML are parsed in GitHub-flavored markdown previews. Besides the content's frontmatter, I'd like for the markdown to be fully readable outside of the context of a Reveal.js slide. Should the web frontend fail, a simple markdown file as a standalone document is presentable.
+My intent with the implementation has been to avoid Hugo's shortcodes and fragments except for HTML. Markdown and HTML are parsed in GitHub-flavored markdown previews. Besides the content's frontmatter, I'd like for the markdown to be fully readable outside of the context of a Reveal.js slide. Should the web frontend fail, a simple markdown file as a standalone document is presentable.
 
 ### Features
 
@@ -18,8 +18,13 @@ My intent here has been to avoid Hugo's shortcodes and fragments except for HTML
 - [x] Theme customization for Reveal.js and Highlight.js
   - Choose from the `assets/highlight-js/` and `static/reveal-js/css/theme/` folders for themes
 - [x] Mobile friendly and responsive
-- [ ] Plugin: Add serverless slide sync via Firebase and presenter authentication
-- [ ] Plugin: Question/comment submission to Firebase
+- [x] Add `?print-pdf` for styles optimal for PDF printouts
+- Content manipulation
+  - [ ] Put images in `/static/images/` used by content posts and reference them with the typical markdown `![alt text](/static/images/image.png "title")` and on load JavaScript will replace the attributes with a `data-src` in order to [lazy-load images](https://github.com/hakimel/reveal.js/#lazy-loading). This is the explicitly chosen method in order to avoid shortcodes (see [Purpose](#purpose)) and allow the images to render with markdown previews.
+  - [ ] All links open in a new window and pause the presentation so the slideshow isn't disrupted
+- Plugin ideas
+  - [ ] Add serverless slide sync via Firebase and presenter authentication
+  - [ ] Plugin: Question/comment submission to Firebase
 - [ ] Improve responsiveness of the Reveal.js notes plugin view
 
 ### Bugs

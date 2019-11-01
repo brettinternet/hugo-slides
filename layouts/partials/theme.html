@@ -1,18 +1,33 @@
-{{ $reset := "reveal-js/css/reset.css" }}
-<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reset }}">
+{{ $reset_css := "reveal-js/css/reset.css" }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reset_css }}">
 
-{{ $reveal := "reveal-js/css/reveal.css" }}
-<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reveal }}">
+{{ $reveal_css := "reveal-js/css/reveal.css" }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reveal_css }}">
 
-{{ $theme := "reveal-js/css/theme/white.css" }}
-<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $theme }}">
+{{ if (isset .Page.Params.revealjs "theme") }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}reveal-js/css/theme/{{ .Page.Params.revealjs.theme }}.css">
+{{ else if (isset .Site.Params.revealjs "theme") }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}reveal-js/css/theme/{{ .Site.Params.revealjs.theme }}.css">
+{{ else }}
+{{ $theme_css_default := "reveal-js/css/theme/white.css" }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $theme_css_default }}">
+{{ end }}
 
-{{ $highlight_theme := resources.Get "highlight-js/default.min.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $highlight_theme.RelPermalink }}">
+{{ if (isset .Page.Params.highlightjs "theme") }}
+{{ $theme := .Page.Params.highlightjs.theme }}
+{{ $resource_path := printf "highlight-js/%s.css" $theme }}
+{{ $highlight_theme_css := resources.Get $resource_path | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $highlight_theme_css.RelPermalink }}">
+{{ else if (isset .Site.Params.highlightjs "theme") }}
+{{ $theme := .Site.Params.highlightjs.theme }}
+{{ $resource_path := printf "highlight-js/%s.css" $theme }}
+{{ $highlight_theme_css := resources.Get $resource_path | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $highlight_theme_css.RelPermalink }}">
+{{ else }}
+{{ $highlight_theme_css := resources.Get "highlight-js/a11y-dark.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $highlight_theme_css.RelPermalink }}">
+{{ end }}
 
 
-{{ $print := "reveal-js/css/print/paper.css" }}
-<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $print }}">
-
-{{ $slides := resources.Get "css/slides.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $slides.RelPermalink }}">
+{{ $slides_css := resources.Get "css/slides.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $slides_css.RelPermalink }}">

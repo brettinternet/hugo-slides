@@ -1,10 +1,8 @@
 (function() {
-  contentSetup();
-
   var options = Object.assign(
     {},
-    camelize(revealHugoSiteParams),
-    camelize(revealHugoPageParams)
+    camelize(payload.revealHugoSiteParams),
+    camelize(payload.revealHugoPageParams)
   );
 
   Reveal.initialize(options);
@@ -34,16 +32,6 @@
   document.getElementById("open-notes").addEventListener("click", function() {
     Reveal.getPlugin("notes").open();
   });
-
-  /**
-   * A hack so that values arent escaped in code blocks (`&` -/-> `&amp;`)
-   */
-  function contentSetup() {
-    var dataContentEl = document.getElementById("content");
-    var revealScriptEl = document.getElementById("reveal-content");
-    revealScriptEl.innerHTML = dataContentEl.dataset.content;
-    dataContentEl.remove();
-  }
 
   /**
    * Hugo makes params lowercase, so we must store in snake and convert
