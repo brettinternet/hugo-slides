@@ -8,6 +8,8 @@ tags: ["markdown", "demo"]
 <section data-markdown data-separator="^\r?\n---\r?\n$" data-separator-vertical="^\r?\n--\r?\n$"
   data-separator-notes="^Note:">
 
+<textarea data-template>
+
 # Markdown Only
 
 ---
@@ -104,4 +106,5 @@ With sixty seconds’ worth of distance run, \
 Yours is the Earth and everything that’s in it, \
 And—which is more—you’ll be a Man, my son!
 
+</textarea>
 </section>
