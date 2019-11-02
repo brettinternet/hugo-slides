@@ -1,6 +1,8 @@
 baseURL: "https://brettinternet.com/hugo-slides/"
 title: "Slides"
 description: "A simple directory for your Reveal.js slides"
+theme: "."
+themesDir: "../"
 
 params:
   repo: "https://github.com/brettinternet/hugo-slides"
