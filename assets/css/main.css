@@ -45,15 +45,38 @@ li {
 
 table.directory {
   text-align: left;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 700px;
 }
 
 table.directory thead {
   font-family: monospace;
 }
 
+table.directory thead .column-date {
+  width: 25%;
+}
+
+table.directory thead .column-name {
+  width: 45%;
+}
+
+table.directory thead .column-subject {
+  width: 0%;
+}
+
+table.directory thead .column-tags {
+  width: 30%;
+}
+
 table.directory thead th,
 table.directory .fields td {
   padding: 0.5rem;
+}
+
+table.directory .fields td {
+  vertical-align: text-top;
 }
 
 table.directory time {
@@ -81,6 +104,10 @@ table.directory .mobile-row {
   display: table-row;
 }
 
+table.directory .subject {
+  max-width: 500px;
+}
+
 .mobile-subject {
   padding-bottom: 1rem;
 }
@@ -96,5 +123,21 @@ table.directory .mobile-row {
 
   table.directory .mobile-row {
     display: none;
+  }
+
+  table.directory thead .column-date {
+    width: 15%;
+  }
+
+  table.directory thead .column-name {
+    width: 20%;
+  }
+
+  table.directory thead .column-subject {
+    width: 45%;
+  }
+
+  table.directory thead .column-tags {
+    width: 20%;
   }
 }

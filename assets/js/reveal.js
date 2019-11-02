@@ -9,6 +9,7 @@
 
   /**
    * Animate appearance, also so slide reset doesn't show
+   * with our markdown hack
    */
   const reveal = document.getElementById("reveal");
   reveal.style.opacity = "0";
@@ -20,17 +21,6 @@
       reveal.style.transition = "opacity 500ms";
       reveal.style.opacity = "1";
     }, 500);
-  });
-
-  /**
-   * handle corner elements
-   * @source https://github.com/hakimel/reveal.js/issues/806#issuecomment-222417787
-   */
-  var header = document.getElementById("header");
-  document.getElementById("reveal").appendChild(header);
-
-  document.getElementById("open-notes").addEventListener("click", function() {
-    Reveal.getPlugin("notes").open();
   });
 
   /**

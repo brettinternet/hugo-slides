@@ -1,26 +1,27 @@
 (function() {
-  contentSetup();
+  /**
+   * If link is not relative, open it in a new tab and pause the presentation
+   */
+  Reveal.addEventListener("ready", function(_event) {
+    Array.prototype.slice.call(document.links).forEach(function(link) {
+      if (link.href && link.href.indexOf(payload.baseUrl) === -1) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.onclick = function() {
+          Reveal.togglePause();
+        };
+      }
+    });
+  });
 
   /**
-   * A hack so that values arent escaped in code blocks (`&` -/-> `&amp;`)
+   * handle corner actions
+   * @source https://github.com/hakimel/reveal.js/issues/806#issuecomment-222417787
    */
-  function contentSetup() {
-    var dataContentEl = document.getElementById("content");
-    var revealScriptEl = document.getElementById("reveal-content");
-    revealScriptEl.innerHTML = dataContentEl.dataset.content;
-    dataContentEl.remove();
-  }
+  var header = document.getElementById("header");
+  document.getElementById("reveal").appendChild(header);
 
-  // var images = document.getElementsByTagName("img");
-  // console.log("document.images: ", document.images, images);
-  // Array.prototype.slice.call(document.images).forEach(function(image) {
-  //   console.log("image: ", image);
-  //   var src = image.src.split("/static/")[1];
-  //   if (src) {
-  //     image.removeAttribute("src");
-  //     image.dataset.src = payload.baseUrl + src;
-  //   }
-  // });
-
-  // var frames = document.getElementsByTagName("iframe");
+  document.getElementById("open-notes").addEventListener("click", function() {
+    Reveal.getPlugin("notes").open();
+  });
 })();

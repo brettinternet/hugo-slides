@@ -1,29 +1,29 @@
 <table class="directory">
   <thead>
     <tr>
-      <th>lastmod</th>
-      <th>name</th>
-      <th class="desktop-cell">subject</th>
-      <th>tags</th>
+      <th class="column-date">lastmod</th>
+      <th class="column-name">name</th>
+      <th class="column-subject desktop-cell">subject</th>
+      <th class="column-tags">tags</th>
     </tr>
   </thead>
   <tbody>
     {{ range . }}
     <tr class="fields">
       <td>
-        <time>{{ dateFormat "Jan 2, 2006" .Lastmod }}</time>
+        {{ with .Lastmod }}
+        <time>{{ dateFormat "Jan 2, 2006" . }}</time>
+        {{ end }}
       </td>
       <td class="filepath">
-        <a href="{{ .URL }}">{{.File}}</a>
+        <a href="{{ .URL }}">{{ .File.Dir }}{{.File.BaseFileName}}</a>
       </td>
-      <td class="desktop-cell">
+      <td class="desktop-cell subject">
+        {{ with .Description }}
         <i>
-          {{ with .Description }}
           {{ . }}
-          {{ else }}
-          {{ .Summary}}
-          {{ end }}
         </i>
+        {{ end }}
       </td>
       <td>
         {{ if .Params.tags }}

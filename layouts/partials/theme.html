@@ -31,3 +31,7 @@
 
 {{ $slides_css := resources.Get "css/slides.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $slides_css.RelPermalink }}">
+
+<!--[if lt IE 9]>
+<script src="reveal-js/lib/js/html5shiv.js"></script>
+<![endif]-->

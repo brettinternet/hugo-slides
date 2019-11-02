@@ -6,9 +6,9 @@ A simple directory for your Reveal.js markdown slides. [View demo](https://brett
 
 ### Purpose
 
-The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations.
+The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations. Here I implement an incredible simple browsable directory for the content.
 
-My intent with the implementation has been to avoid Hugo's shortcodes and fragments except for HTML. Markdown and HTML are parsed in GitHub-flavored markdown previews. Besides the content's frontmatter, I'd like for the markdown to be fully readable outside of the context of a Reveal.js slide. Should the web frontend fail, a simple markdown file as a standalone document is presentable.
+My original intent with the implementation was to avoid creating slides with HTML in favor of markdown and skip Hugo's shortcodes and fragments to avoid marrying the slide content with the static site builder. I wanted the markdown to be fully readable outside of the context of a Reveal.js slide. Then, should the web frontend fail, a simple markdown file as a standalone document would be presentable. However, in order to utilize all the Reveal.js features, I've found that just using the HTML API is the easiest way to create slides.
 
 ### Features
 
@@ -20,8 +20,8 @@ My intent with the implementation has been to avoid Hugo's shortcodes and fragme
 - [x] Mobile friendly and responsive
 - [x] Add `?print-pdf` for styles optimal for PDF printouts
 - Content manipulation
-  - [ ] Put images in `/static/images/` used by content posts and reference them with the typical markdown `![alt text](/static/images/image.png "title")` and on load JavaScript will replace the attributes with a `data-src` in order to [lazy-load images](https://github.com/hakimel/reveal.js/#lazy-loading). This is the explicitly chosen method in order to avoid shortcodes (see [Purpose](#purpose)) and allow the images to render with markdown previews.
-  - [ ] All links open in a new window and pause the presentation so the slideshow isn't disrupted
+  - [x] Put images in `/static/images/` used by content posts and reference them with `<img data-src="/<baseURL>/images/image.png"` in order to [lazy-load images](https://github.com/hakimel/reveal.js/#lazy-loading). This is the explicitly chosen method in order to avoid shortcodes.
+  - [x] All links open in a new window and pause the presentation so the slideshow isn't disrupted
 - Plugin ideas
   - [ ] Add serverless slide sync via Firebase and presenter authentication
   - [ ] Plugin: Question/comment submission to Firebase
@@ -29,6 +29,6 @@ My intent with the implementation has been to avoid Hugo's shortcodes and fragme
 
 ### Bugs
 
-- [ ] Improve markdown loading to Reveal.js
-  - [ ] [Auto-sliding](https://github.com/hakimel/reveal.js/#auto-sliding) is unpredictable because of the way markdown content is loaded into Reveal.js
-  - [ ] Fix subtle vertical slide animations when traversing slides horizontally
+- [x] Improve markdown loading to Reveal.js
+  - **Using `.html` content files with frontmatter, HTML based on the Reveal.js API is the best method to harness all features of the Reveal library**
+  - TOML appears to be a better candidate for html content since VS Code seems to prettify the indented items for subfields

@@ -11,4 +11,4 @@ params:
   revealjs:
     hash: true
     theme: "solarized"
-    pdfMaxPagesPerSlide: 1
+    pdf_max_pages_per_slide: 1
