@@ -32,6 +32,8 @@ hugo new site slides
 
 cd slides
 
+git init
+
 git submodule add https://github.com/brettinternet/hugo-slides.git theme/hugo-slides
 ```
 
