@@ -1,16 +1,15 @@
 ---
-title: "markdown only"
+title: "Markdown"
 date: 2019-10-30
-description: "This set of slides demonstrates how to setup a markdown only file"
+description: "These slides demonstrate how markdown can be used"
 tags: ["markdown", "demo"]
 ---
 
 <section data-markdown data-separator="^\r?\n---\r?\n$" data-separator-vertical="^\r?\n--\r?\n$"
   data-separator-notes="^Note:">
+<script type="text/template">
 
-<textarea data-template>
-
-# Markdown Only
+# Markdown Content
 
 ---
 
@@ -18,12 +17,19 @@ Markdown-only slides must be nested in a section element:
 
 <!-- prettier-ignore -->
 ```html
-< section
+<section
   data-markdown
   data-separator="^\r?\n---\r?\n$"
   data-separator-vertical="^\r?\n--\r?\n$"
-  data-separator-notes="^Note:" >
+  data-separator-notes="^Note:">
+
+  <script type="text/template">
 ```
+
+---
+
+- ✅ Wash car
+- ⬜ Take out the trash
 
 ---
 
@@ -59,6 +65,8 @@ try {
 ## If
 
 #### by Rudyard Kipling
+
+Press `s` or hover cursor in the bottom left corner to read the presenter notes.
 
 Note: Rudyard Kipling is one of the best-known of the late Victorian poets and story-tellers. Although he was awarded the Nobel Prize for literature in 1907, his political views, which grew more toxic as he aged, have long made him critically unpopular. In the New Yorker, Charles McGrath remarked “Kipling has been variously labelled a colonialist, a jingoist, a racist, an anti-Semite, a misogynist, a right-wing imperialist warmonger; and—though some scholars have argued that his views were more complicated than he is given credit for—to some degree he really was all those things. That he was also a prodigiously gifted writer who created works of inarguable greatness hardly matters anymore, at least not in many classrooms, where Kipling remains politically toxic.” However, Kipling’s works for children, above all his novel The Jungle Book, first published in 1894, remain part of popular cultural through the many movie versions made and remade since the 1960s.
 
@@ -106,5 +114,5 @@ With sixty seconds’ worth of distance run, \
 Yours is the Earth and everything that’s in it, \
 And—which is more—you’ll be a Man, my son!
 
-</textarea>
+</script>
 </section>
