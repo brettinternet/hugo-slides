@@ -23,9 +23,28 @@ My original intent with the implementation was to avoid creating slides with HTM
   - [ ] Plugin: Question/comment submission to Firebase
 - [ ] Improve responsiveness of the Reveal.js notes plugin view
 
+## Usage
+
 ### Configuration
 
-See [archtypes](archtypes) for markdown and HTML example content files.
+Reveal and Hightlightjs parameters can be set in `config.yml` and in content frontmatter.
+
+For example, in the [`exampleSite/config.yml`](exampleSite/config.yml) we have:
+
+```yml
+params:
+  repo: "https://github.com/brettinternet/hugo-slides"
+  author:
+    name: "@brettinternet"
+    homepage: "https://brettinternet.com"
+  highlightjs:
+    theme: "solarized-dark"
+  revealjs:
+    hash: true
+    theme: "solarized"
+```
+
+See [archtypes](archtypes) for markdown and HTML example content configurations.
 
 ### Content
 
@@ -43,7 +62,7 @@ hugo new my-presentation.html
 
 All absolute links are modified to open in a new window and pause the presentation so the slideshow isn't disrupted.
 
-See [`content/demo.html`](content/demo.html) for example usage of the [Reveal.js API](https://github.com/hakimel/reveal.js).
+See [`exampleSite/content/demo.html`](content/demo.html) for example usage of the [Reveal.js API](https://github.com/hakimel/reveal.js).
 
 TOML frontmatter appears to be a better candidate for HTML content since VS Code and Prettier prettify the indented items for subfields.
 
@@ -60,3 +79,17 @@ Creating slides with markdown is convenient because there is less boilerplate. A
 However, in order to utilize all the Reveal.js features, use HTML to access the full API.
 
 You may use `.md` or `.markdown` for markdown file extensions.
+
+## Develop
+
+#### Server
+
+```sh
+hugo server -s exampleSite --verbose --watch
+```
+
+#### Build
+
+```sh
+hugo -s exampleSite --gc --minify
+```

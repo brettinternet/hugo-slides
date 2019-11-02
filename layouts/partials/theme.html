@@ -15,17 +15,15 @@
 
 {{ if (isset .Page.Params.highlightjs "theme") }}
 {{ $theme := .Page.Params.highlightjs.theme }}
-{{ $resource_path := printf "highlight-js/%s.css" $theme }}
-{{ $highlight_theme_css := resources.Get $resource_path | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $highlight_theme_css.RelPermalink }}">
+{{ $highlight_theme_css := printf "highlight-js/%s.css" $theme }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $highlight_theme_css }}">
 {{ else if (isset .Site.Params.highlightjs "theme") }}
 {{ $theme := .Site.Params.highlightjs.theme }}
-{{ $resource_path := printf "highlight-js/%s.css" $theme }}
-{{ $highlight_theme_css := resources.Get $resource_path | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $highlight_theme_css.RelPermalink }}">
+{{ $highlight_theme_css := printf "highlight-js/%s.css" $theme }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $highlight_theme_css }}">
 {{ else }}
 {{ $highlight_theme_css := resources.Get "highlight-js/a11y-dark.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $highlight_theme_css.RelPermalink }}">
+<link rel="stylesheet" href="{{ .Site.BaseURL }}{{ $highlight_theme_css }}">
 {{ end }}
 
 

@@ -3,6 +3,8 @@ title: "Markdown"
 date: 2019-10-30
 description: "These slides demonstrate how markdown can be used"
 tags: ["markdown", "demo"]
+highlightjs:
+  theme: "brown-paper"
 revealjs:
   controls_tutorial: true
 ---
@@ -43,6 +45,8 @@ try {
     "https://stackoverflow.com/" + "search?q=[js]+" + e.message;
 }
 ```
+
+Highlight-js theme is set with `highlightjs.theme` in site params or page frontmatter.
 
 ---
 
