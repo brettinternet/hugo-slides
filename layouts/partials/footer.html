@@ -1,13 +1,12 @@
 <footer>
   <div>
     {{ if .Site.Params.Author.Homepage }}
-    <a href="{{ .Site.Params.Author.Homepage }}">
-      {{ if .Site.Params.Author.Name }}
-      {{ .Site.Params.Author.Name }}
-      {{ else }}
-      {{ .Site.Title }}
-      {{ end }}
-    </a>
+    <a
+      href="{{ .Site.Params.Author.Homepage }}">{{ if .Site.Params.Author.Name }}{{ .Site.Params.Author.Name }}{{ else }}{{ .Site.Title }}{{ end }}</a>
+    {{ end }}
+    <span>{{ if and .Site.Params.Author.Homepage .Site.Params.Repo }}/{{ end }}</span>
+    {{ if .Site.Params.Repo }}
+    <a href="{{ .Site.Params.Repo }}">source</a>
     {{ end }}
   </div>
 </footer>

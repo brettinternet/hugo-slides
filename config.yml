@@ -3,6 +3,7 @@ title: "Slides"
 description: "A simple directory for your Reveal.js slides"
 
 params:
+  repo: "https://github.com/brettinternet/hugo-slides"
   author:
     name: "@brettinternet"
     homepage: "https://brettinternet.com"
