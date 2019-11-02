@@ -3,6 +3,8 @@ title: "Markdown"
 date: 2019-10-30
 description: "These slides demonstrate how markdown can be used"
 tags: ["markdown", "demo"]
+revealjs:
+  controls_tutorial: true
 ---
 
 # Markdown Content

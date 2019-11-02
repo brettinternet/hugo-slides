@@ -8,7 +8,7 @@ A simple directory for your Reveal.js markdown slides. [View demo](https://brett
 
 The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations. Here I implement an incredible simple browsable directory for the content.
 
-My original intent with the implementation was to avoid creating slides with HTML in favor of markdown and skip Hugo's shortcodes and fragments to avoid marrying the slide content with the static site builder. I wanted the markdown to be fully readable outside of the context of a Reveal.js slide. Then, should the web frontend fail, a simple markdown file as a standalone document would be presentable. However, in order to utilize all the Reveal.js features, I've found that just using the HTML API is the easiest way to create slides.
+My original intent with the implementation was to avoid creating slides with HTML in favor of markdown and skip Hugo's shortcodes and fragments to avoid marrying the slide content with the static site builder. I wanted the markdown to be fully readable outside of the context of a Reveal.js slide.
 
 ### Features
 
@@ -18,17 +18,45 @@ My original intent with the implementation was to avoid creating slides with HTM
 - [x] Theme customization for Reveal.js and Highlight.js
   - Choose from the `assets/highlight-js/` and `static/reveal-js/css/theme/` folders for themes
 - [x] Mobile friendly and responsive
-- [x] Add `?print-pdf` for styles optimal for PDF printouts
-- Content manipulation
-  - [x] Put images in `/static/images/` used by content posts and reference them with `<img data-src="/<baseURL>/images/image.png"` in order to [lazy-load images](https://github.com/hakimel/reveal.js/#lazy-loading). This is the explicitly chosen method in order to avoid shortcodes.
-  - [x] All links open in a new window and pause the presentation so the slideshow isn't disrupted (for markdown files, use the [Blackfriday](https://gohugo.io/getting-started/configuration/#blackfriday-options) option)
 - Plugin ideas
   - [ ] Add serverless slide sync via Firebase and presenter authentication
   - [ ] Plugin: Question/comment submission to Firebase
 - [ ] Improve responsiveness of the Reveal.js notes plugin view
 
-### Bugs
+### Configuration
 
-- [x] Improve markdown loading to Reveal.js
-  - **Using `.html` content files with frontmatter, HTML based on the Reveal.js API is the best method to harness all features of the Reveal library**
-  - TOML appears to be a better candidate for html content since VS Code seems to prettify the indented items for subfields
+See [archtypes](archtypes) for markdown and HTML example content files.
+
+### Content
+
+Reveal's `?print-pdf` query option in the URL alters styles to optimize the layout for PDF printouts. Otherwise, styles are included for a printable page layout.
+
+Put images in `/static/images/` used by content posts and reference them with `<img data-src="/<baseURL>/images/image.png"` in order to [lazy-load images](https://github.com/hakimel/reveal.js/#lazy-loading). This is the explicitly chosen method in order to avoid Hugo shortcodes.
+
+#### HTML
+
+Create an HTML content slide from the archtype's boilerplate:
+
+```sh
+hugo new my-presentation.html
+```
+
+All absolute links are modified to open in a new window and pause the presentation so the slideshow isn't disrupted.
+
+See [`content/demo.html`](content/demo.html) for example usage of the [Reveal.js API](https://github.com/hakimel/reveal.js).
+
+TOML frontmatter appears to be a better candidate for HTML content since VS Code and Prettier prettify the indented items for subfields.
+
+#### Markdown
+
+Create a markdown content slide from the archtype's boilerplate:
+
+```sh
+hugo new my-presentation.md
+```
+
+Creating slides with markdown is convenient because there is less boilerplate. Additionally, if the web frontend fails, a simple markdown file as a standalone document would still be presentable in preview mode.
+
+However, in order to utilize all the Reveal.js features, use HTML to access the full API.
+
+You may use `.md` or `.markdown` for markdown file extensions.
