@@ -25,6 +25,18 @@ My original intent with the implementation was to avoid creating slides with HTM
 
 ## Usage
 
+## Install
+
+```sh
+hugo new site slides
+
+cd slides
+
+git submodule add https://github.com/brettinternet/hugo-slides.git theme/hugo-slides
+```
+
+## Setup
+
 ### Configuration
 
 Reveal and Hightlightjs parameters can be set in `config.yml` and in content frontmatter.
