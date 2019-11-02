@@ -21,7 +21,7 @@
   var header = document.getElementById("header");
   document.getElementById("reveal").appendChild(header);
 
-  document.getElementById("open-notes").addEventListener("click", function() {
+  document.getElementById("open-notes").onclick = function() {
     Reveal.getPlugin("notes").open();
-  });
+  };
 })();

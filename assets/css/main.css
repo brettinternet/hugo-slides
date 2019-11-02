@@ -58,7 +58,7 @@ table.directory thead .column-date {
   width: 25%;
 }
 
-table.directory thead .column-name {
+table.directory thead .column-file {
   width: 45%;
 }
 
@@ -129,7 +129,7 @@ table.directory .subject {
     width: 15%;
   }
 
-  table.directory thead .column-name {
+  table.directory thead .column-file {
     width: 20%;
   }
 

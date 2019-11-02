@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th class="column-date">lastmod</th>
-      <th class="column-name">name</th>
+      <th class="column-name">file</th>
       <th class="column-subject desktop-cell">subject</th>
       <th class="column-tags">tags</th>
     </tr>
@@ -16,7 +16,9 @@
         {{ end }}
       </td>
       <td class="filepath">
-        <a href="{{ .URL }}">{{ .File.Dir }}{{.File.BaseFileName}}</a>
+        <a href="{{ .URL }}">
+          {{ if and (ne .File.Dir "/") (ne .File.Dir "\\") }}{{ .File.Dir }}{{ end }}{{.File.BaseFileName}}
+        </a>
       </td>
       <td class="desktop-cell subject">
         {{ with .Description }}
