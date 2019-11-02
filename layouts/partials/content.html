@@ -1,1 +1,10 @@
+{{ if eq .File.Ext "md" }}
+<section data-markdown data-separator="^\r?\n---\r?\n$" data-separator-vertical="^\r?\n--\r?\n$"
+  data-separator-notes="^Note:">
+  <textarea data-template>{{ .RawContent }}</textarea>
+</section>
+{{ else if eq .File.Ext "html" }}
 {{ .Content }}
+{{ else }}
+<p>Unsupported content file.</p>
+{{ end }}

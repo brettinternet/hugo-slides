@@ -5,15 +5,11 @@ description: "These slides demonstrate how markdown can be used"
 tags: ["markdown", "demo"]
 ---
 
-<section data-markdown data-separator="^\r?\n---\r?\n$" data-separator-vertical="^\r?\n--\r?\n$"
-  data-separator-notes="^Note:">
-<script type="text/template">
-
 # Markdown Content
 
 ---
 
-Markdown-only slides must be nested in a section element:
+Markdown content is nested in a section element:
 
 <!-- prettier-ignore -->
 ```html
@@ -25,6 +21,8 @@ Markdown-only slides must be nested in a section element:
 
   <script type="text/template">
 ```
+
+Some features, like customizing backgrounds, are missing in markdown mode.
 
 ---
 
@@ -113,6 +111,3 @@ If you can fill the unforgiving minute \
 With sixty seconds’ worth of distance run, \
 Yours is the Earth and everything that’s in it, \
 And—which is more—you’ll be a Man, my son!
-
-</script>
-</section>

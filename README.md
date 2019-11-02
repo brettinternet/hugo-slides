@@ -21,7 +21,7 @@ My original intent with the implementation was to avoid creating slides with HTM
 - [x] Add `?print-pdf` for styles optimal for PDF printouts
 - Content manipulation
   - [x] Put images in `/static/images/` used by content posts and reference them with `<img data-src="/<baseURL>/images/image.png"` in order to [lazy-load images](https://github.com/hakimel/reveal.js/#lazy-loading). This is the explicitly chosen method in order to avoid shortcodes.
-  - [x] All links open in a new window and pause the presentation so the slideshow isn't disrupted
+  - [x] All links open in a new window and pause the presentation so the slideshow isn't disrupted (for markdown files, use the [Blackfriday](https://gohugo.io/getting-started/configuration/#blackfriday-options) option)
 - Plugin ideas
   - [ ] Add serverless slide sync via Firebase and presenter authentication
   - [ ] Plugin: Question/comment submission to Firebase
