@@ -37,6 +37,10 @@ git init
 git submodule add https://github.com/brettinternet/hugo-slides.git theme/hugo-slides
 ```
 
+For minimal setups, you can remove the site's `archtypes`, `layouts`, and `static` directories to rely on the theme's usage of these modules.
+
+For additional configuration files such as `.travis.yml` and `config.toml`, see the [exampleSite directory](exampleSite/) or [my slides repo](https://github.com/brettinternet/slides).
+
 ## Setup
 
 ### Configuration
