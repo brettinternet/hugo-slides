@@ -6,9 +6,7 @@ A simple directory for your Reveal.js markdown slides. [View demo](https://brett
 
 ### Purpose
 
-The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations. Here I implement an incredible simple browsable directory for the content.
-
-My original intent with the implementation was to avoid creating slides with HTML in favor of markdown and skip Hugo's shortcodes and fragments to avoid marrying the slide content with the static site builder. I wanted the markdown to be fully readable outside of the context of a Reveal.js slide.
+The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations. Here I implement a _very_ simple and browsable directory for the content. All the assets are managed by the theme so you can focus on HTML or markdown content.
 
 ### Features
 
