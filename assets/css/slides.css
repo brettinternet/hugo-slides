@@ -5,23 +5,12 @@
   }
 }
 
+/* Top left */
 #header-left {
   position: absolute;
   top: 0%;
   left: 0%;
   margin: 1rem;
-}
-
-#header-right {
-  position: absolute;
-  top: 0%;
-  right: 0%;
-}
-#footer-left {
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  margin: 0.5rem;
 }
 
 .flex-row {
@@ -59,13 +48,31 @@
   font-size: 1.2rem;
 }
 
+/* Top right */
+#header-right {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Bottom left */
+#footer-left {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  margin: 0.5rem;
+}
+
 #open-notes {
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: opacity 250ms;
-  opacity: 0;
   color: inherit;
+  opacity: 0;
+  transition: opacity 250ms;
 }
 
 #open-notes:hover {

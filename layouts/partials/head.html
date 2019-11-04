@@ -8,5 +8,13 @@
   {{ with .Site.Author.name }}
   <meta name="author" content="{{ . }}">
   {{ end }}
+
   <link rel="shortcut icon" type="image/x-icon" href="{{ .Site.BaseURL }}favicon.ico" />
+
+  {{ $main_css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $main_css.RelPermalink }}">
+  {{ $auth_css := resources.Get "css/auth.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $auth_css.RelPermalink }}">
+
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
 </head>

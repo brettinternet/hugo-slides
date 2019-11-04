@@ -1,0 +1,90 @@
+#auth {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+#auth .action {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.action-spacer {
+  margin-left: 0.5rem;
+}
+
+.dim {
+  transition: opacity 250ms;
+  opacity: 0.3;
+}
+
+.dim:hover {
+  opacity: 1;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+#user-icon {
+  position: relative;
+  overflow: hidden;
+}
+
+#user-icon img {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  transition: opacity 250ms;
+}
+
+#user-icon.with-image .sign-out-icon {
+  opacity: 0;
+  transition: opacity 250ms;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 0;
+}
+
+#user-icon.with-image svg {
+  height: 16px;
+  width: 16px;
+}
+
+#sign-out:hover {
+  opacity: 1;
+}
+
+#sign-out:hover .sign-out-icon {
+  opacity: 1;
+}
+
+#sign-out:hover img {
+  opacity: 0.5;
+}
+
+#username {
+  margin-right: 0.3rem;
+}
+
+#firebase-ui {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#firebase-ui-close {
+  margin-bottom: 0.25rem;
+}
