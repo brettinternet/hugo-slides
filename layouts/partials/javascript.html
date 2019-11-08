@@ -1,21 +1,24 @@
-{{ $object_assign_js := resources.Get "js/object-assign.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $object_assign_js.RelPermalink }}"></script>
+{{ $global_js := resources.Get "js/global.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $global_js.RelPermalink }}"></script>
 
 {{ $revealjs_path := "reveal-js/js/reveal.js" }}
 <script type="text/javascript" src="{{ .Site.BaseURL }}{{ $revealjs_path }}"></script>
 
 <script type="text/javascript">
   var payload = {}
-  payload.revealHugoSiteParams = JSON.parse({{ .Site.Params.revealjs | jsonify }});
-  payload.revealHugoPageParams = JSON.parse({{ .Page.Params.revealjs | jsonify }});
-  payload.baseUrl = {{ .Site.BaseURL }}
+  payload.firebase = JSON.parse({{ .Site.Params.firebase | jsonify }})
+  payload.revealSiteParams = JSON.parse({{ .Site.Params.revealjs | jsonify }});
+  payload.revealPageParams = JSON.parse({{ .Page.Params.revealjs | jsonify }});
+  payload.baseUrl = {{ .Site.BaseURL }};
+  payload.slideId = {{ .Page.UniqueID }}; // {{ .Page.File.Path }};
+  payload.presenterUids = {{ .Site.Params.presenter_uids }}
 </script>
 
 {{ $head_js := resources.Get "js/head.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $head_js.RelPermalink }}"></script>
 
-{{ $setup_js := resources.Get "js/setup.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $setup_js.RelPermalink }}"></script>
+{{ $before_reveal_js := resources.Get "js/before-reveal.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $before_reveal_js.RelPermalink }}"></script>
 
 {{ $reveal_js := resources.Get "js/reveal.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $reveal_js.RelPermalink }}"></script>
@@ -33,3 +36,18 @@
 {{ range slice $marked $markdown $highlight $zoom $notes $math }}
 <script type="text/javascript" src="{{ $baseUrl }}{{ . }}"></script>
 {{ end }}
+
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+
+{{ $firebase_init_js := resources.Get "js/firebase.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $firebase_init_js.RelPermalink }}"></script>
+
+<script src="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.js"></script>
+{{ $auth_js := resources.Get "js/auth.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $auth_js.RelPermalink }}"></script>
+
+{{ $sync_js := resources.Get "js/sync.js" | minify | fingerprint }}
+<script type="text/javascript" src="{{ $sync_js.RelPermalink }}"></script>

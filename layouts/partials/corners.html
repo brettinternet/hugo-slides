@@ -1,6 +1,5 @@
-<div style="display:none;" aria-hidden="true">
-  <div id="header" class="no-print">
-    <!-- <div id="header-left">
+<div id="header" class="no-print">
+  <!-- <div id="header-left">
       <div class="flex-column">
         <div class="author">
           {{ if .Site.Params.Author.Homepage }}
@@ -18,12 +17,15 @@
         </div>
       </div>
     </div> -->
-    <!-- <div id="header-right">HEADER-RIGHT</div> -->
-    <div id="footer-left">
-      <button id="open-notes" aria-label="Open presentation notes" title="Notes">
-        {{ partial "icons/file-text.svg" }}
-      </button>
-    </div>
+  <div id="header-right">
+    {{ partial "auth" }}
+  </div>
+  <div id="footer-left">
+
+    <button id="open-notes" class="icon-button" aria-label="Open presentation notes" title="Notes">
+      {{ partial "icons/file-text.svg" }}
+    </button>
+
   </div>
 </div>
 </div>

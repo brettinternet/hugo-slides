@@ -3,8 +3,8 @@
 
   var options = Object.assign(
     {},
-    camelize(payload.revealHugoSiteParams),
-    camelize(payload.revealHugoPageParams)
+    camelize(payload.revealSiteParams),
+    camelize(payload.revealPageParams)
   );
 
   Reveal.initialize(options);
@@ -37,23 +37,5 @@
     }
 
     Reveal.addEventListener("ready", handleHtmlReady);
-  }
-
-  /**
-   * Hugo makes params lowercase, so we must store in snake and convert
-   */
-  function camelize(map) {
-    if (map) {
-      Object.keys(map).forEach(function(k) {
-        newK = k.replace(/(\_\w)/g, function(m) {
-          return m[1].toUpperCase();
-        });
-        if (newK != k) {
-          map[newK] = map[k];
-          delete map[k];
-        }
-      });
-    }
-    return map;
   }
 })();

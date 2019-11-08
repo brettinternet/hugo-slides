@@ -14,3 +14,12 @@ params:
   revealjs:
     hash: true
     theme: "solarized"
+  firebase:
+    api_key: "AIzaSyCjcz40PXVc8aNX4f7eTv_S5Y3r7xPNJzY"
+    auth_domain: "hugo-slides.firebaseapp.com"
+    database_url: "https://hugo-slides.firebaseio.com"
+    project_id: "hugo-slides"
+    sotrage_bucket: "hugo-slides.appspot.com"
+    messaging_sender_id: "675344717926"
+    app_id: "1:675344717926:web:dd652868ced0547b9ff5a7"
+  presenter_uids: ["DEMO"]

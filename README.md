@@ -17,7 +17,7 @@ The [JAMstack](https://jamstack.org) is the simplest method to host and maintain
   - Choose from the `assets/highlight-js/` and `static/reveal-js/css/theme/` folders for themes
 - [x] Mobile friendly and responsive
 - Plugin ideas
-  - [ ] Add serverless slide sync via Firebase and presenter authentication
+  - [x] Add serverless slide sync via Firebase and presenter authentication
   - [ ] Plugin: Question/comment submission to Firebase
 - [ ] Improve responsiveness of the Reveal.js notes plugin view
 
@@ -53,14 +53,30 @@ params:
   author:
     name: "@brettinternet"
     homepage: "https://brettinternet.com"
+
   highlightjs:
     theme: "solarized-dark"
   revealjs:
     hash: true
     theme: "solarized"
+
+  # Firebase config provided by console when you create a project/app
+  firebase:
+    api_key: "..."
+    auth_domain: "my-slides.firebaseapp.com"
+    database_url: "https://my-slides.firebaseio.com"
+    project_id: "my-slides"
+    sotrage_bucket: "my-slides.appspot.com"
+    messaging_sender_id: "123"
+    app_id: "..."
+
+  # Login with GitHub into the app, then go to Firebase console > Develop > Authentication > Users and retrive your `User UID`
+  presenter_uids: ["123abc"]
 ```
 
 See [archtypes](archtypes) for markdown and HTML example content configurations.
+
+To test Firebase slide synchronization, sign in with your GitHub account on [the demo site](https://brettinternet.github.io/hugo-slides/). Open a different browser or incognito window to view a viewer's sync ability with the presenter. In the demo, any user can be a presenter, however in your app you may specify IDs as `presenter_uids` to distinguish presenters.
 
 ### Content
 

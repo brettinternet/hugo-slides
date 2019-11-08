@@ -14,14 +14,35 @@
     });
   });
 
-  /**
-   * handle corner actions
-   * @source https://github.com/hakimel/reveal.js/issues/806#issuecomment-222417787
-   */
-  var header = document.getElementById("header");
-  document.getElementById("reveal").appendChild(header);
+  setThemeStyles();
 
-  document.getElementById("open-notes").onclick = function() {
+  /**
+   * Bottom left
+   */
+  var notesButton = document.getElementById("open-notes");
+  notesButton.onclick = function() {
     Reveal.getPlugin("notes").open();
   };
+
+  function setThemeStyles() {
+    /**
+     * Get theme styles
+     */
+    var revealRootDiv = window.Reveal.getRevealElement();
+    var revealRootStyles = window.getComputedStyle(revealRootDiv);
+    var themeColor = revealRootStyles.getPropertyValue("color");
+
+    var bodyStyles = window.getComputedStyle(document.body);
+    var themeBackgroundColor = bodyStyles.getPropertyValue("background-color");
+
+    /**
+     * Set styles
+     */
+    var headerRoot = document.getElementById("header");
+    headerRoot.style.color = themeColor;
+
+    var firebaseUiRoot = document.getElementById("firebase-ui");
+    firebaseUiRoot.style.backgroundColor = themeBackgroundColor;
+    firebaseUiRoot.style.color = themeColor;
+  }
 })();
