@@ -5,49 +5,6 @@
   }
 }
 
-/* Top left */
-#header-left {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  margin: 1rem;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-/* .logo {
-  margin-right: 0.5rem;
-}
-
-.logo img {
-  height: 30px;
-  width: 30px;
-} */
-
-.author {
-  font-size: 0.75rem;
-}
-
-.author a {
-  text-decoration: none;
-}
-
-.author a:hover {
-  text-decoration: underline;
-}
-
-.title {
-  font-size: 1.2rem;
-}
-
 /* Top right */
 #header-right {
   position: absolute;

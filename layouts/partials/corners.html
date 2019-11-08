@@ -1,22 +1,4 @@
 <div id="header" class="no-print">
-  <!-- <div id="header-left">
-      <div class="flex-column">
-        <div class="author">
-          {{ if .Site.Params.Author.Homepage }}
-          <a href="{{ .Site.Params.Author.Homepage }}" target="__blank" rel="noopener noreferrer">
-            {{ if .Site.Params.Author.Name }}
-            {{ .Site.Params.Author.Name }}
-            {{ else }}
-            {{ .Site.Title }}
-            {{ end }}
-          </a>
-          {{ end }}
-        </div>
-        <div class="title">
-          {{ .Title }}
-        </div>
-      </div>
-    </div> -->
   <div id="header-right">
     {{ partial "auth" }}
   </div>
@@ -27,5 +9,4 @@
     </button>
 
   </div>
-</div>
 </div>
