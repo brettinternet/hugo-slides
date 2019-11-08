@@ -5,9 +5,11 @@
   </button>
 
   <div id="firebase-ui" style="display:none;" tabindex="0" aria-hidden="true">
-    <button id="firebase-ui-close" class="flex action dim action-spacer" aria-label="Close" title="Close">
-      {{ partial "icons/x.svg"}}
-    </button>
+    <div>
+      <button id="firebase-ui-close" class="flex action dim action-spacer" aria-label="Close" title="Close">
+        {{ partial "icons/x.svg"}}
+      </button>
+    </div>
   </div>
 
   <button id="sign-out" class="flex action dim action-spacer" style="display:none;" aria-label="Sign out"
@@ -18,6 +20,11 @@
         {{ partial "icons/log-out.svg" }}
       </div>
     </div>
+  </button>
+
+  <button id="sync" style="display:none;" checked="false" class="flex action dim action-spacer" aria-label="Sync"
+    title="Sync">
+    {{ partial "icons/zap.svg" }}
   </button>
 
 </div>

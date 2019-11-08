@@ -14,43 +14,7 @@
     });
   });
 
-  /**
-   * Get theme styles
-   */
-  var revealRootDiv = window.Reveal.getRevealElement();
-  var revealRootStyles = window.getComputedStyle(revealRootDiv);
-  var themeColor = revealRootStyles.getPropertyValue("color");
-
-  var bodyStyles = window.getComputedStyle(document.body);
-  var themeBackgroundColor = bodyStyles.getPropertyValue("background-color");
-
-  /**
-   * Set styles
-   */
-  var headerRoot = document.getElementById("header");
-  headerRoot.style.color = themeColor;
-
-  var firebaseUiRoot = document.getElementById("firebase-ui");
-  firebaseUiRoot.style.backgroundColor = themeBackgroundColor;
-
-  /**
-   * Set actions
-   *
-   * Top right
-   */
-  var firebaseUiRoot = document.getElementById("firebase-ui");
-
-  var openSignInButton = document.getElementById("sign-in");
-  openSignInButton.onclick = function() {
-    firebaseUiRoot.style.display = "";
-    firebaseUiRoot.setAttribute("aria-hidden", false);
-  };
-
-  var closeSignInButton = document.getElementById("firebase-ui-close");
-  closeSignInButton.onclick = function() {
-    firebaseUiRoot.style.display = "none";
-    firebaseUiRoot.setAttribute("aria-hidden", true);
-  };
+  setThemeStyles();
 
   /**
    * Bottom left
@@ -59,4 +23,26 @@
   notesButton.onclick = function() {
     Reveal.getPlugin("notes").open();
   };
+
+  function setThemeStyles() {
+    /**
+     * Get theme styles
+     */
+    var revealRootDiv = window.Reveal.getRevealElement();
+    var revealRootStyles = window.getComputedStyle(revealRootDiv);
+    var themeColor = revealRootStyles.getPropertyValue("color");
+
+    var bodyStyles = window.getComputedStyle(document.body);
+    var themeBackgroundColor = bodyStyles.getPropertyValue("background-color");
+
+    /**
+     * Set styles
+     */
+    var headerRoot = document.getElementById("header");
+    headerRoot.style.color = themeColor;
+
+    var firebaseUiRoot = document.getElementById("firebase-ui");
+    firebaseUiRoot.style.backgroundColor = themeBackgroundColor;
+    firebaseUiRoot.style.color = themeColor;
+  }
 })();
