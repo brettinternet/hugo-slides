@@ -6,7 +6,7 @@ A simple directory for your Reveal.js markdown slides. [View demo](https://brett
 
 ### Purpose
 
-The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations. Here I implement a _very_ simple and browsable directory for the content. All the assets are managed by the theme so you can focus on HTML or markdown content.
+The [JAMstack](https://jamstack.org) is the simplest method to host and maintain slides. With GitHub pages, static sites are incredibly easy to maintain, and this is the simplicity I've looked for with hosting Reveal.js presentations. Here I implement a _very_ simple and browsable directory for the content. All the assets are managed by the theme so you can focus on HTML or markdown content. Firebase can be used to sync slides with viewers.
 
 ### Features
 
@@ -76,7 +76,7 @@ params:
 
 See [archtypes](archtypes) for markdown and HTML example content configurations.
 
-To test Firebase slide synchronization, sign in with your GitHub account on [the demo site](https://brettinternet.github.io/hugo-slides/). Open a different browser or incognito window to view a viewer's sync ability with the presenter. In the demo, any user can be a presenter, however in your app you may specify IDs as `presenter_uids` to distinguish presenters.
+To test Firebase slide synchronization, sign in with your GitHub account on [the demo site](https://brettinternet.github.io/hugo-slides/). Open a different browser or incognito window to view a viewer's sync ability with the presenter. Simply toggle the lightning bolt button icon. In the demo, any user can be a presenter, however in your app you may specify IDs as `presenter_uids` to distinguish presenters.
 
 ### Content
 

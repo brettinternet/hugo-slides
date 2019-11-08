@@ -37,6 +37,7 @@
 <script type="text/javascript" src="{{ $baseUrl }}{{ . }}"></script>
 {{ end }}
 
+{{ with .Site.Params.Firebase }}
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
@@ -51,3 +52,4 @@
 
 {{ $sync_js := resources.Get "js/sync.js" | minify | fingerprint }}
 <script type="text/javascript" src="{{ $sync_js.RelPermalink }}"></script>
+{{ end }}

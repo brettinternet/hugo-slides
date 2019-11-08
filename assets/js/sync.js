@@ -102,7 +102,12 @@ if (window.firebase) {
     }
 
     function isPresenterUid(uid) {
-      return payload.presenterUids.indexOf(uid) > -1;
+      var presenterUids = payload.presenterUids;
+      return (
+        presenterUids &&
+        presenterUids.length > 0 &&
+        presenterUids.indexOf(uid) > -1
+      );
     }
 
     function demoModeActive(uid) {
