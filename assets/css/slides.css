@@ -5,6 +5,10 @@
   }
 }
 
+#header {
+  z-index: 100;
+}
+
 /* Top right */
 #header-right {
   position: absolute;

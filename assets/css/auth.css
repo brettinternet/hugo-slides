@@ -11,8 +11,12 @@ button.action {
   color: inherit;
 }
 
-.action-spacer {
+.spacer-left {
   margin-left: 0.5rem;
+}
+
+.spacer-right {
+  margin-right: 0.5rem;
 }
 
 .dim {
@@ -20,7 +24,9 @@ button.action {
   opacity: 0.3;
 }
 
-.dim:hover {
+.dim:hover,
+.dim:active,
+.dim:focus {
   opacity: 1;
 }
 
@@ -29,8 +35,19 @@ button.action {
   align-items: center;
 }
 
-#user-icon {
+.flex.column {
+  flex-direction: column;
+}
+
+.relative {
   position: relative;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+#user-icon {
   overflow: hidden;
 }
 
@@ -41,55 +58,38 @@ button.action {
   transition: opacity 250ms;
 }
 
-#user-icon.with-image .sign-out-icon {
-  opacity: 0;
-  transition: opacity 250ms;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  padding: 0;
-}
-
-#user-icon.with-image svg {
-  height: 16px;
-  width: 16px;
-}
-
-/*  */
-#sign-out:hover {
-  opacity: 1;
-}
-
-#sign-out:hover .sign-out-icon {
-  opacity: 1;
-}
-
-#sign-out:hover img {
-  opacity: 0.5;
-}
-
-#username {
-  margin-right: 0.3rem;
-}
-/*  */
-
 #sync.active {
   color: #2684ff;
 }
 
 #firebase-ui {
-  position: absolute;
-  top: 0;
-  right: 0;
-  max-width: 360px;
-  display: flex;
-  flex-direction: column;
   align-items: flex-end;
   padding: 0.5rem;
+  top: 0;
+  right: 0;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  border-width: 1px;
+  border-color: inherit;
+  border-style: solid;
+}
+
+@media only screen and (min-width: 500px) {
+  .dropdown {
+    left: auto;
+  }
+
+  #firebase-ui {
+    width: 360px;
+  }
+
+  #user-dropdown {
+    width: auto;
+  }
 }
 
 #firebase-ui button {
@@ -103,4 +103,33 @@ button.action {
 
 #firebase-ui-close {
   margin-bottom: 0.25rem;
+}
+
+#user-dropdown {
+  top: 130%;
+  right: 0;
+}
+
+#user-dropdown:after {
+  top: -14px;
+  right: 10px;
+  left: auto;
+  border: 7px solid transparent;
+  border-bottom-color: #fff;
+  position: absolute;
+  display: inline-block;
+  content: "";
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.icon-sm svg {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  width: 16px;
 }

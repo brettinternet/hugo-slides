@@ -1,7 +1,5 @@
 if (window.firebase) {
   (function() {
-    // if authed, set presentation to active
-    // if not authed, alert that presentation is active
     var isSynced = false;
     var database = firebase.database();
     var activePresentationTableName = "presentations";
@@ -135,10 +133,14 @@ if (window.firebase) {
     function setSlideState(state) {
       switch (state) {
         case states.OVERVIEW_SHOWN:
-          Reveal.toggleOverview(true);
+          if (!Reveal.isOverview()) {
+            Reveal.toggleOverview(true);
+          }
           break;
         case states.OVERVIEW_HIDDEN:
-          Reveal.toggleOverview(false);
+          if (Reveal.isOverview()) {
+            Reveal.toggleOverview(false);
+          }
           break;
       }
     }

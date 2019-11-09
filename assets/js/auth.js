@@ -19,7 +19,7 @@ if (window.firebase) {
       };
     }
 
-    initApp = function() {
+    var initApp = function() {
       auth.onAuthStateChanged(
         function(user) {
           if (user) {
@@ -43,39 +43,23 @@ if (window.firebase) {
      * @param {!firebase.User} user
      */
     function handleSignedInUser(user) {
-      var displayName;
-      if (!user.displayName) {
-        displayName = "anonymous";
-        user.updateProfile({
-          displayName: displayName
-        });
-      } else {
-        displayName = user.displayName;
-      }
-
       hideSignInButton();
-
-      var usernameSpan = document.getElementById("username");
-      usernameSpan.innerText = displayName;
-      usernameSpan.style.display = "block";
-
       hideFirebaseUI();
 
+      setDisplayName(user);
       if (user.photoURL) {
-        var userIconDiv = document.getElementById("user-icon");
-        userIconDiv.classList.add("with-image");
-        var image = document.createElement("img");
-        image.src = user.photoURL;
-        image.alt = user.displayName;
-        userIconDiv.appendChild(image);
+        setUserImage(user);
       }
     }
 
     var signOutButton = document.getElementById("sign-out");
+    var userMenuButton = document.getElementById("user-menu");
 
     function handleSignOut() {
       showSignInButton();
-      var userImage = signOutButton.getElementsByTagName("img")[0];
+      var userImage = document
+        .getElementById("user-icon")
+        .getElementsByTagName("img")[0];
       if (userImage) {
         userImage.remove();
       }
@@ -88,12 +72,12 @@ if (window.firebase) {
 
     function showSignInButton() {
       document.getElementById("sign-in").style.display = "";
-      document.getElementById("sign-out").style.display = "none";
+      userMenuButton.style.display = "none";
     }
 
     function hideSignInButton() {
       document.getElementById("sign-in").style.display = "none";
-      document.getElementById("sign-out").style.display = "";
+      userMenuButton.style.display = "";
     }
 
     /**
@@ -103,8 +87,8 @@ if (window.firebase) {
     document.getElementById("firebase-ui-close").onclick = hideFirebaseUI;
 
     function showFirebaseUI(event) {
-      var firebaseUiRoot = document.getElementById("firebase-ui");
       stopPropagation(event);
+      var firebaseUiRoot = document.getElementById("firebase-ui");
       firebaseUiRoot.style.display = "";
       firebaseUiRoot.setAttribute("aria-hidden", false);
       document.body.appendChild(firebaseUiRoot);
@@ -127,6 +111,33 @@ if (window.firebase) {
 
     function stopPropagation(event) {
       event.stopPropagation();
+    }
+
+    /**
+     * Login side effects
+     */
+    function setDisplayName(user) {
+      var displayName;
+      if (!user.displayName) {
+        displayName = "anonymous";
+        user.updateProfile({
+          displayName: displayName
+        });
+      } else {
+        displayName = user.displayName;
+      }
+      var usernameSpan = document.getElementById("username");
+      usernameSpan.innerText = displayName;
+      usernameSpan.style.display = "block";
+    }
+
+    function setUserImage(user) {
+      var userIconDiv = document.getElementById("user-icon");
+      userIconDiv.classList.add("with-image");
+      var image = document.createElement("img");
+      image.src = user.photoURL;
+      image.alt = user.displayName;
+      userIconDiv.appendChild(image);
     }
   })();
 }

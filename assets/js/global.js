@@ -1,4 +1,16 @@
 /**
+ * Determine if page is loaded in iFrame (such as notes window)
+ * @source https://stackoverflow.com/a/326076/6817437
+ */
+function inIframe() {
+  try {
+    return window.self !== window.top;
+  } catch (e) {
+    return true;
+  }
+}
+
+/**
  * Hugo makes params lowercase, so we must store in snake and convert
  */
 function camelize(map) {

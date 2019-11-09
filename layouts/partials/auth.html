@@ -1,28 +1,36 @@
 <div id="auth">
 
-  <button id="sign-in" class="flex action dim action-spacer" aria-label="Sign in" title="Sign in">
+  <button id="sign-in" class="flex action dim spacer-left" aria-label="Sign in" title="Sign in">
     {{ partial "icons/user.svg" }}
   </button>
 
-  <div id="firebase-ui" style="display:none;" class="no-print" tabindex="0" aria-hidden="true">
+  <div id="firebase-ui" style="display:none;" class="no-print dropdown flex column" tabindex="0" aria-hidden="true">
     <div>
-      <button id="firebase-ui-close" class="flex action dim action-spacer" aria-label="Close" title="Close">
+      <button id="firebase-ui-close" class="flex action dim spacer-left" aria-label="Close" title="Close">
         {{ partial "icons/x.svg"}}
       </button>
     </div>
   </div>
 
-  <button id="sign-out" class="flex action dim action-spacer" style="display:none;" aria-label="Sign out"
-    title="Sign out">
-    <div id="username" style="display:none;"></div>
-    <div id="user-icon" class="flex">
-      <div class="flex sign-out-icon">
-        {{ partial "icons/log-out.svg" }}
+  <div class="relative">
+    <button id="user-menu" class="dim flex action spacer-left" style="display:none;" aria-label="User menu"
+      title="User menu">
+      <div id="username" class="spacer-right nowrap" style="display:none;"></div>
+      <div id="user-icon" class="flex">
       </div>
-    </div>
-  </button>
+    </button>
 
-  <button id="sync" style="display:none;" checked="false" class="flex action dim action-spacer" aria-label="Sync"
+    <div id="user-dropdown" style="display:none;" class="dropdown" aria-hidden="true">
+      <button id="sign-out" class="flex action dropdown-item">
+        <div class="spacer-right nowrap">Sign out</div>
+        <div class="icon-sm">
+          {{ partial "icons/log-out.svg" }}
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <button id="sync" style="display:none;" checked="false" class="flex action dim spacer-left" aria-label="Sync"
     title="Sync">
     {{ partial "icons/zap.svg" }}
   </button>

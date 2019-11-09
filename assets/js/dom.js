@@ -16,6 +16,13 @@
 
   setThemeStyles();
 
+  if (!inIframe()) {
+    showHeaderCorners();
+  }
+
+  var userMenuButton = document.getElementById("user-menu");
+  userMenuButton.onclick = showUserMenu;
+
   /**
    * Bottom left
    */
@@ -23,6 +30,27 @@
   notesButton.onclick = function() {
     Reveal.getPlugin("notes").open();
   };
+
+  function showHeaderCorners() {
+    var header = document.getElementById("header");
+    header.style.display = "";
+  }
+
+  function showUserMenu(event) {
+    stopPropagation(event);
+    var userDropdown = document.getElementById("user-dropdown");
+    userDropdown.onClick = stopPropagation;
+    userDropdown.style.display = "";
+    userDropdown.setAttribute("aria-hidden", "false");
+    document.addEventListener("click", handleDocumentClick);
+  }
+
+  function hideUserMenu() {
+    var userDropdown = document.getElementById("user-dropdown");
+    userDropdown.style.display = "none";
+    userDropdown.setAttribute("aria-hidden", "true");
+    document.removeEventListener("click", handleDocumentClick);
+  }
 
   function setThemeStyles() {
     /**
@@ -44,5 +72,13 @@
     var firebaseUiRoot = document.getElementById("firebase-ui");
     firebaseUiRoot.style.backgroundColor = themeBackgroundColor;
     firebaseUiRoot.style.color = themeColor;
+  }
+
+  function handleDocumentClick() {
+    hideUserMenu();
+  }
+
+  function stopPropagation(event) {
+    event.stopPropagation();
   }
 })();

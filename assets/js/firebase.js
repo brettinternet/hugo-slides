@@ -4,7 +4,7 @@ if (window.firebase) {
     /**
      * Rename non-camelcase key 🙄
      */
-    if (firebaseConfig) {
+    if (firebaseConfig && !inIframe()) {
       Object.defineProperty(
         firebaseConfig,
         "databaseURL",
