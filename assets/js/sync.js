@@ -1,6 +1,7 @@
 if (window.firebase) {
   (function() {
     var isSynced = false;
+    var isActivePresentation = false;
     var database = firebase.database();
     var activePresentationTableName = "presentations";
     var presentationRef = database.ref(
@@ -52,6 +53,10 @@ if (window.firebase) {
       if (values) {
         if (isNotSender(values.fingerprint)) {
           showSyncButton();
+          if (!isActivePresentation) {
+            isActivePresentation = true;
+            syncClient();
+          }
 
           if (isSynced) {
             var state = values.state;
@@ -62,8 +67,11 @@ if (window.firebase) {
         }
       } else {
         hideSyncButton();
+        isActivePresentation = false;
       }
     }
+
+    syncClient();
 
     /**
      * @param {String} state Attribute of a slide, one of `state`
@@ -153,6 +161,7 @@ if (window.firebase) {
     function killPresentation() {
       // event listeners should clean up themselves
       presentationRef.remove();
+      isActivePresentation = false;
     }
 
     /**
@@ -172,18 +181,21 @@ if (window.firebase) {
     /**
      * Sync button
      */
-    var syncButton = document.getElementById("sync");
     function showSyncButton() {
+      var syncButton = document.getElementById("sync");
       syncButton.style.display = "";
     }
 
     function hideSyncButton() {
+      var syncButton = document.getElementById("sync");
       syncButton.style.display = "none";
       stopSync();
     }
 
+    var syncButton = document.getElementById("sync");
     syncButton.onclick = activateSync;
     function activateSync() {
+      var syncButton = document.getElementById("sync");
       if (syncButton.checked === "true") {
         stopSync();
       } else {
@@ -192,6 +204,7 @@ if (window.firebase) {
     }
 
     function syncClient() {
+      var syncButton = document.getElementById("sync");
       isSynced = true;
       syncButton.classList.add("active");
       syncButton.checked = "true";
@@ -201,6 +214,7 @@ if (window.firebase) {
     }
 
     function stopSync() {
+      var syncButton = document.getElementById("sync");
       isSynced = false;
       syncButton.classList.remove("active");
       syncButton.checked = "false";

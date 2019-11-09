@@ -43,6 +43,7 @@
     userDropdown.style.display = "";
     userDropdown.setAttribute("aria-hidden", "false");
     document.addEventListener("click", handleDocumentClick);
+    userMenuButton.classList.add("opaque");
   }
 
   function hideUserMenu() {
@@ -50,6 +51,7 @@
     userDropdown.style.display = "none";
     userDropdown.setAttribute("aria-hidden", "true");
     document.removeEventListener("click", handleDocumentClick);
+    userMenuButton.classList.remove("opaque");
   }
 
   function setThemeStyles() {

@@ -4,49 +4,6 @@
   align-items: center;
 }
 
-button.action {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-}
-
-.spacer-left {
-  margin-left: 0.5rem;
-}
-
-.spacer-right {
-  margin-right: 0.5rem;
-}
-
-.dim {
-  transition: opacity 250ms;
-  opacity: 0.3;
-}
-
-.dim:hover,
-.dim:active,
-.dim:focus {
-  opacity: 1;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-}
-
-.flex.column {
-  flex-direction: column;
-}
-
-.relative {
-  position: relative;
-}
-
-.nowrap {
-  white-space: nowrap;
-}
-
 #user-icon {
   overflow: hidden;
 }
@@ -115,7 +72,7 @@ button.action {
   right: 10px;
   left: auto;
   border: 7px solid transparent;
-  border-bottom-color: #fff;
+  border-bottom-color: inherit;
   position: absolute;
   display: inline-block;
   content: "";
