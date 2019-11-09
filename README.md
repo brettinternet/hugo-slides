@@ -11,15 +11,18 @@ The [JAMstack](https://jamstack.org) is the simplest method to host and maintain
 ### Features
 
 - [x] Directory to navigate all markdown files in `content` directory and view as Reveal.js slides
-- [x] A hidden note button in the bottom left for mobile views that are unable to use `s` hotkey
 - [x] Customize Reveal.js configuration for overall site and per presentation via content frontmatter
 - [x] Theme customization for Reveal.js and Highlight.js
   - Choose from the `assets/highlight-js/` and `static/reveal-js/css/theme/` folders for themes
 - [x] Mobile friendly and responsive
 - Plugin ideas
   - [x] Add serverless slide sync via Firebase and presenter authentication
+    - Logging into multiple clients is permitted. For example, you could use a phone as a remote or to read presenter notes as slides come up.
   - [ ] Plugin: Question/comment submission to Firebase
-- [ ] Improve responsiveness of the Reveal.js notes plugin view
+- [ ] Improve features of the Reveal.js notes plugin view
+  - Better responsiveness
+  - Buttons to modify font size for note text
+  - Time div should be a fixed header while notes body scrolls
 
 ## Usage
 

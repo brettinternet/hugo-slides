@@ -24,24 +24,21 @@
   padding: 0.5rem;
   top: 0;
   right: 0;
+  left: 0;
 }
 
 .dropdown {
   position: absolute;
   z-index: 100;
-  left: 0;
   border-width: 1px;
   border-color: inherit;
   border-style: solid;
 }
 
 @media only screen and (min-width: 500px) {
-  .dropdown {
-    left: auto;
-  }
-
   #firebase-ui {
     width: 360px;
+    left: auto;
   }
 
   #user-dropdown {
@@ -82,11 +79,12 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  width: 100%;
 }
 
-.icon-sm svg {
+.icon-sm {
   display: flex;
   align-items: center;
-  height: 16px;
-  width: 16px;
+  justify-content: center;
+  transform: scale(0.65);
 }

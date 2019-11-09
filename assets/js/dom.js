@@ -20,9 +20,6 @@
     showHeaderCorners();
   }
 
-  var userMenuButton = document.getElementById("user-menu");
-  userMenuButton.onclick = showUserMenu;
-
   /**
    * Bottom left
    */
@@ -36,6 +33,8 @@
     header.style.display = "";
   }
 
+  var userMenuButton = document.getElementById("user-menu");
+  userMenuButton.onclick = showUserMenu;
   function showUserMenu(event) {
     stopPropagation(event);
     var userDropdown = document.getElementById("user-dropdown");
@@ -44,6 +43,7 @@
     userDropdown.setAttribute("aria-hidden", "false");
     document.addEventListener("click", handleDocumentClick);
     userMenuButton.classList.add("opaque");
+    userMenuButton.onclick = hideUserMenu;
   }
 
   function hideUserMenu() {
@@ -52,6 +52,7 @@
     userDropdown.setAttribute("aria-hidden", "true");
     document.removeEventListener("click", handleDocumentClick);
     userMenuButton.classList.remove("opaque");
+    userMenuButton.onclick = showUserMenu;
   }
 
   function setThemeStyles() {
@@ -71,9 +72,11 @@
     var headerRoot = document.getElementById("header");
     headerRoot.style.color = themeColor;
 
-    var firebaseUiRoot = document.getElementById("firebase-ui");
-    firebaseUiRoot.style.backgroundColor = themeBackgroundColor;
-    firebaseUiRoot.style.color = themeColor;
+    var dropdowns = document.getElementsByClassName("dropdown");
+    Array.prototype.slice.call(dropdowns).forEach(function(element) {
+      element.style.backgroundColor = themeBackgroundColor;
+      element.style.color = themeColor;
+    });
   }
 
   function handleDocumentClick() {

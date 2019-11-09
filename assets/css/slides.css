@@ -9,7 +9,6 @@
   z-index: 100;
 }
 
-/* Top right */
 #header-right {
   position: absolute;
   top: 0%;
@@ -17,27 +16,6 @@
   margin: 0.5rem;
   display: flex;
   flex-direction: row;
-}
-
-/* Bottom left */
-#footer-left {
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  margin: 0.5rem;
-}
-
-#open-notes {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  opacity: 0;
-  transition: opacity 250ms;
-}
-
-#open-notes:hover {
-  opacity: 1;
 }
 
 button.action {
