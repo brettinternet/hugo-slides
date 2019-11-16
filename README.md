@@ -127,7 +127,7 @@ Install JavaScript dependencies:
 npm install
 ```
 
-`postinstall` will run `bin/setup.js` which prepares some of the CSS theme files for highlight.js and reveal.js.
+`postinstall` will run `bin/postinstall.js` which prepares some of the CSS theme files for highlight.js and reveal.js.
 
 #### Server
 
