@@ -19,8 +19,8 @@ The [JAMstack](https://jamstack.org) is the simplest method to host and maintain
   - [x] Add serverless slide sync via Firebase and presenter authentication
     - Logging into multiple clients is permitted. For example, you could use a phone as a remote or to read presenter notes as slides come up.
   - [ ] Plugin: Question/comment submission to Firebase
-- [ ] Improve features of the Reveal.js notes plugin view
-  - Better responsiveness
+- [x] Improve features of the Reveal.js notes plugin view
+  - Improved responsiveness
   - Buttons to modify font size for note text
   - Time div should be a fixed header while notes body scrolls
 
@@ -117,14 +117,28 @@ You may use `.md` or `.markdown` for markdown file extensions.
 
 ## Develop
 
+The way Hugo handles JS is painful, so we use parcel to bundle our JavaScript theme files as well as third party dependencies. Unfortunately, because we're bundling outside of Hugo, HMR is doesn't work directly through Hugo so refreshes are needed for JS changes to take effect.
+
+#### Setup
+
+Install JavaScript dependencies:
+
+```sh
+npm install
+```
+
+`postinstall` will run `bin/setup.js` which prepares some of the CSS theme files for highlight.js and reveal.js.
+
 #### Server
 
 ```sh
-hugo server -s exampleSite --verbose --watch
+npm start
 ```
+
+A `prestart` script runs `bin/prestart.js` which cleans up previous Parcel bundle artifacts and prepopulates the `assets/bundle` directory so the concurrent race condition doesn't allow Hugo to miss these JS and CSS dependencies on the initial load.
 
 #### Build
 
 ```sh
-hugo -s exampleSite --gc --minify
+npm build
 ```

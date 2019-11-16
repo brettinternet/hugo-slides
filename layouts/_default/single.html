@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ with.Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-{{ partial "head.html" . }}
-{{ partial "theme" . }}
+{{ partial "head" . }}
+{{ partial "slides/head" . }}
 
 <body>
 
@@ -10,9 +10,9 @@
       {{ partial "content" . }}
     </div>
   </div>
-  {{ partial "corners" . }}
+  {{ partial "slides/corners" . }}
 
-  {{ partial "javascript" . }}
+  {{ partial "slides/javascript" . }}
 </body>
 
 </html>

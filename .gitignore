@@ -1,2 +1,8 @@
 public
 resources
+node_modules
+.cache
+assets/themes
+assets/bundle/css/*.js*
+assets/bundle/css/*.map
+assets/bundle/js/*.map
