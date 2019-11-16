@@ -143,7 +143,10 @@ exports.inIframe = inIframe;
 
 var _utils = require("./utils");
 
-var baseUrl = window.hugoPayload.baseUrl;
+var _window = window,
+    Reveal = _window.Reveal,
+    hugoPayload = _window.hugoPayload;
+var baseUrl = hugoPayload.baseUrl;
 /**
  * If link is not relative, open it in a new tab and pause the presentation
  */
@@ -208,7 +211,7 @@ function setThemeStyles() {
   /**
    * Get theme styles
    */
-  var revealRootDiv = window.Reveal.getRevealElement();
+  var revealRootDiv = Reveal.getRevealElement();
   var revealRootStyles = window.getComputedStyle(revealRootDiv);
   var themeColor = revealRootStyles.getPropertyValue("color");
   var bodyStyles = window.getComputedStyle(document.body);
@@ -269,7 +272,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59528" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "16300" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

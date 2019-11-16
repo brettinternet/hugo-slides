@@ -1,5 +1,6 @@
 import { inIframe } from "./utils";
-const { baseUrl } = window.hugoPayload;
+const { Reveal, hugoPayload } = window;
+const { baseUrl } = hugoPayload;
 
 /**
  * If link is not relative, open it in a new tab and pause the presentation
@@ -61,7 +62,7 @@ function setThemeStyles() {
   /**
    * Get theme styles
    */
-  const revealRootDiv = window.Reveal.getRevealElement();
+  const revealRootDiv = Reveal.getRevealElement();
   const revealRootStyles = window.getComputedStyle(revealRootDiv);
   const themeColor = revealRootStyles.getPropertyValue("color");
 

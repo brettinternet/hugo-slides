@@ -1,12 +1,16 @@
 import camelCase from "lodash/camelCase";
 import Reveal from "reveal.js";
+import getNotesPlugin from "./plugin/notes/notes.js";
 
-const { siteParams, pageParams } = window.hugoPayload.reveal;
+const { config, notesHtml } = window.hugoPayload.reveal;
+const { siteParams, pageParams } = config;
 
 contentSetup();
 
 /**
  * Pugins require global Reveal pollution 🙄
+ * Would be nice to rewrite plugins with reference
+ * to `this.Reveal` rather than `Reveal`
  */
 window.Reveal = Reveal;
 
@@ -28,14 +32,9 @@ const dependencies = [
     async: true
   },
   { src: require("reveal.js/plugin/zoom-js/zoom.js"), async: true },
-  { src: require("reveal.js/plugin/math/math.js"), async: true }
+  { src: require("reveal.js/plugin/math/math.js"), async: true },
+  { src: getNotesPlugin(notesHtml), async: true }
 ];
-
-/**
- * @TODO
- */
-import initNotes from "./plugin/notes/notes";
-initNotes("./notes.html");
 
 const isMarkdown = document.getElementById("reveal-markdown");
 const options = Object.assign(

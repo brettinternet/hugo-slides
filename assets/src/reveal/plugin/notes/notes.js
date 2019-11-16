@@ -9,28 +9,24 @@
  * 3. This window proceeds to send the current presentation state
  *    to the notes window
  */
-export default function(notesPath) {
+export default notesHtml => {
   var RevealNotes = (function() {
     var notesPopup = null;
 
-    function openNotes(notesFilePath) {
+    function openNotes() {
       if (notesPopup && !notesPopup.closed) {
         notesPopup.focus();
         return;
       }
 
-      if (!notesFilePath) {
-        var jsFileLocation = document.querySelector('script[src$="notes.js"]')
-          .src; // this js file path
-        jsFileLocation = jsFileLocation.replace(/notes\.js(\?.*)?$/, ""); // the js folder path
-        notesFilePath = jsFileLocation + "notes.html";
-      }
-
+      var windowSettings = ",menubar=0,toolbar=0,location=0,titlebar=0";
       notesPopup = window.open(
-        notesFilePath,
-        "reveal.js - Notes",
-        "width=1100,height=700"
+        "",
+        "Notes",
+        "width=1100,height=700" + windowSettings
       );
+
+      notesPopup.document.write(notesHtml);
 
       if (!notesPopup) {
         alert(
@@ -174,14 +170,14 @@ export default function(notesPath) {
         if (!/receiver/i.test(window.location.search)) {
           // If the there's a 'notes' query set, open directly
           if (window.location.search.match(/(\?|\&)notes/gi) !== null) {
-            openNotes(notesPath);
+            openNotes();
           }
 
           // Open the notes when the 's' key is hit
           Reveal.addKeyBinding(
             { keyCode: 83, key: "S", description: "Speaker notes view" },
             function() {
-              openNotes(notesPath);
+              openNotes();
             }
           );
         }
@@ -192,4 +188,4 @@ export default function(notesPath) {
   })();
 
   Reveal.registerPlugin("notes", RevealNotes);
-}
+};
