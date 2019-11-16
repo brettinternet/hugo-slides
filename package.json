@@ -13,7 +13,7 @@
   "homepage": "https://github.com/brettinternet/hugo-slides#readme",
   "scripts": {
     "postinstall": "node bin/setup.js",
-    "prestart": "node bin/pre-start.js",
+    "prestart": "node bin/prestart.js",
     "start": "concurrently -n \"JS,CSS,Hugo\" -c \"yellow,green,blue\" \"npm:watch-js\" \"npm:watch-css\" \"npm:start-hugo\"",
     "start-hugo": "hugo server -s exampleSite --watch",
     "watch-js": "parcel watch assets/js/**/*.js -d assets/bundle/js",
