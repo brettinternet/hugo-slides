@@ -23,6 +23,8 @@ The [JAMstack](https://jamstack.org) is the simplest method to host and maintain
   - Improved responsiveness
   - Buttons to modify font size for note text
   - Time div should be a fixed header while notes body scrolls
+- [ ] Make slide types configurable
+  - [ ] Add [code-surfer](https://github.com/pomber/code-surfer) slide type
 
 ## Usage
 
