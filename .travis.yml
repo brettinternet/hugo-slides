@@ -13,11 +13,11 @@ install:
   - wget -q https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
   - tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
   - mv hugo ~/bin/
-  - npm i -g parcel
-  - npm i
+  - npm install -g parcel
+  - npm install
 
 script:
-  - npm build
+  - npm run build
 
 deploy:
   provider: pages
