@@ -2,6 +2,7 @@
 {{ $higlight_theme := default .Page.Params.highlightjs.theme $default_highlight_site_theme }}
 {{ $default_reveal_site_theme := default .Site.Params.revealjs.theme "white" }}
 {{ $reveal_theme := default .Page.Params.revealjs.theme $default_reveal_site_theme }}
+{{ $notes_html := partial "slides/notes" . }}
 
 <script type="text/javascript">
   var hugoPayload = {};
@@ -9,9 +10,10 @@
     config: JSON.parse({{ .Site.Params.Firebase | jsonify }})
   };
   hugoPayload.reveal = {
-    config: {
-      siteParams: JSON.parse({{ .Site.Params.revealjs | jsonify }}),
-    pageParams: JSON.parse({{ .Page.Params.revealjs | jsonify }})
+    notesHtml: {{ $notes_html }},
+  config: {
+    siteParams: JSON.parse({{ .Site.Params.revealjs | jsonify }}),
+  pageParams: JSON.parse({{ .Page.Params.revealjs | jsonify }})
     }
   };
   hugoPayload.baseUrl = {{ .Site.BaseURL }};
