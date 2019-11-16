@@ -11,12 +11,7 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ .Site.BaseURL }}favicon.ico" />
 
-  {{ $main_css := resources.Get "css/main.css" | minify | fingerprint }}
+  {{ $main_css := resources.Get "css/main.css" | fingerprint }}
   <link rel="stylesheet" href="{{ $main_css.RelPermalink }}">
-  {{ $auth_css := resources.Get "css/auth.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $auth_css.RelPermalink }}">
 
-
-  {{ $themes_css := resources.Get "bundle/css/themes.css" | fingerprint }}
-  <link rel="stylesheet" href="{{ $themes_css.RelPermalink }}">
 </head>

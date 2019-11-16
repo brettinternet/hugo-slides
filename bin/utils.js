@@ -6,10 +6,10 @@ const path = require("path");
  * @param {String} dirPath
  * @source https://stackoverflow.com/a/42505874/6817437
  */
-exports.rimraf = dirPath => {
+rimraf = dirPath => {
   if (fs.existsSync(dirPath)) {
     fs.readdirSync(dirPath).forEach(function(entry) {
-      var entry_path = path.join(dirPath, entry);
+      const entry_path = path.join(dirPath, entry);
       if (fs.lstatSync(entry_path).isDirectory()) {
         rimraf(entry_path);
       } else {
@@ -26,7 +26,7 @@ exports.rimraf = dirPath => {
  * @param {String} target
  * @source https://stackoverflow.com/a/26038979/6817437
  */
-exports.copyFileSync = (source, target) => {
+copyFileSync = (source, target) => {
   let targetFile = target;
 
   if (fs.existsSync(target)) {
@@ -44,8 +44,8 @@ exports.copyFileSync = (source, target) => {
  * @param {String} target
  * @source https://stackoverflow.com/a/26038979/6817437
  */
-exports.copyFolderRecursiveSync = (source, target) => {
-  const files = [];
+copyFolderRecursiveSync = (source, target) => {
+  let files = [];
 
   const targetFolder = path.join(target, path.basename(source));
   if (!fs.existsSync(targetFolder)) {
@@ -63,4 +63,10 @@ exports.copyFolderRecursiveSync = (source, target) => {
       }
     });
   }
+};
+
+module.exports = {
+  rimraf,
+  copyFileSync,
+  copyFolderRecursiveSync
 };

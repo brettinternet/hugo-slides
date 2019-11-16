@@ -5,17 +5,13 @@
 
 <script type="text/javascript">
   var hugoPayload = {};
-  hugoPayload.highlight = {
-    theme: {{ $higlight_theme }}
-  };
   hugoPayload.firebase = {
     config: JSON.parse({{ .Site.Params.Firebase | jsonify }})
   };
   hugoPayload.reveal = {
-    theme: {{ $reveal_theme }},
-  config: {
-    siteParams: JSON.parse({{ .Site.Params.revealjs | jsonify }}),
-  pageParams: JSON.parse({{ .Page.Params.revealjs | jsonify }})
+    config: {
+      siteParams: JSON.parse({{ .Site.Params.revealjs | jsonify }}),
+    pageParams: JSON.parse({{ .Page.Params.revealjs | jsonify }})
     }
   };
   hugoPayload.baseUrl = {{ .Site.BaseURL }};
@@ -28,9 +24,6 @@
 
 {{ $main_js := resources.Get "bundle/js/main.js" | fingerprint }}
 <script type="text/javascript" src="{{ $main_js.RelPermalink }}"></script>
-
-{{ $theme_js := resources.Get "bundle/js/theme.js" | fingerprint }}
-<script type="text/javascript" src="{{ $theme_js.RelPermalink }}"></script>
 
 {{ with .Site.Params.Firebase }}
 {{ $firebase_js := resources.Get "bundle/js/firebase.js" | fingerprint }}
