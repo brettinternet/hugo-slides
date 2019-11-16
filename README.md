@@ -117,14 +117,24 @@ You may use `.md` or `.markdown` for markdown file extensions.
 
 ## Develop
 
+The way Hugo handles JS is painful, so we use parcel to bundle our JavaScript theme files as well as third party dependencies.
+
+#### Setup
+
+Install JavaScript dependencies:
+
+```sh
+npm install
+```
+
 #### Server
 
 ```sh
-hugo server -s exampleSite --verbose --watch
+npm start
 ```
 
 #### Build
 
 ```sh
-hugo -s exampleSite --gc --minify
+npm build
 ```

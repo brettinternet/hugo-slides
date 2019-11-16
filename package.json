@@ -1,0 +1,45 @@
+{
+  "name": "hugo-slides",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brettinternet/hugo-slides.git"
+  },
+  "author": "brettinternet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brettinternet/hugo-slides/issues"
+  },
+  "homepage": "https://github.com/brettinternet/hugo-slides#readme",
+  "scripts": {
+    "prestart": "npm run clean-bundle && npm run build-js",
+    "start": "concurrently -n \"JS,CSS,Hugo\" -c \"yellow,green,blue\" \"npm:watch-js\" \"npm:watch-css\" \"npm:start-hugo\"",
+    "start-hugo": "hugo server -s exampleSite --watch",
+    "watch-js": "parcel watch assets/js/**/*.js -d assets/bundle/js",
+    "watch-css": "parcel watch assets/css/**/* -d assets/bundle/css",
+    "prebuild": "npm run clean-bundle",
+    "build": "npm run build-js && npm run build-css && npm run build-hugo",
+    "build-highlight-theme": "parcel build node_modules/highlight.js/styles/*.css -d assets/css/themes",
+    "build-reveal-theme": "parcel build node_modules/reveal.js/css/theme/*.css -d assets/css/themes",
+    "build-js": "parcel build assets/js/**/*.js -d assets/bundle/js",
+    "build-css": "parcel build assets/css/**/* -d assets/bundle/css",
+    "build-hugo": "hugo -s exampleSite --gc --minify",
+    "clean-bundle": "rimraf assets/bundle",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "firebase": "^7.4.0",
+    "firebaseui": "^4.3.0",
+    "highlight.js": "^9.16.2",
+    "highlightjs-line-numbers.js": "^2.7.0",
+    "lodash": "^4.17.15",
+    "marked": "^0.7.0",
+    "reveal.js": "^3.8.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "parcel": "^2.0.0-alpha.2.1",
+    "rimraf": "^3.0.0",
+    "sass": "^1.23.3"
+  }
+}

@@ -16,5 +16,7 @@
   {{ $auth_css := resources.Get "css/auth.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $auth_css.RelPermalink }}">
 
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
+
+  {{ $themes_css := resources.Get "bundle/css/themes.css" | fingerprint }}
+  <link rel="stylesheet" href="{{ $themes_css.RelPermalink }}">
 </head>
