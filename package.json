@@ -22,7 +22,8 @@
     "build-js": "parcel build assets/js/**/*.js -d assets/bundle/js",
     "build-css": "parcel build assets/css/**/* -d assets/bundle/css",
     "build-hugo": "hugo -s exampleSite --gc --minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-commit": "node bin/pre-commit.js"
   },
   "dependencies": {
     "firebase": "^7.4.0",
@@ -41,6 +42,6 @@
     "sass": "^1.23.3"
   },
   "pre-commit": [
-    "prestart"
+    "pre-commit"
   ]
 }
