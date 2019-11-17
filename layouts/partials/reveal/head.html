@@ -1,0 +1,30 @@
+{{ $slides_css := resources.Get "bundle/css/slides.css" | fingerprint }}
+<link type="text/css" rel="stylesheet" href="{{ $slides_css.RelPermalink }}">
+
+{{ if (isset .Page.Params.revealjs "theme") }}
+{{ $theme := .Page.Params.revealjs.theme }}
+{{ $reveal_theme_css := printf "themes/reveal/%s.css" $theme }}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reveal_theme_css }}">
+{{ else if (isset .Site.Params.revealjs "theme") }}
+{{ $theme := .Site.Params.revealjs.theme }}
+{{ $reveal_theme_css := printf "themes/reveal/%s.css" $theme }}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reveal_theme_css }}">
+{{ else }}
+{{ $theme := "white" }}
+{{ $reveal_theme_css := printf "themes/reveal/%s.css" $theme }}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}{{ $reveal_theme_css }}">
+{{ end }}
+
+{{ if (isset .Page.Params.highlightjs "theme") }}
+{{ $theme := .Page.Params.highlightjs.theme }}
+{{ $highlight_theme_css := printf "themes/highlight/%s.css" $theme }}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}{{ $highlight_theme_css }}">
+{{ else if (isset .Site.Params.highlightjs "theme") }}
+{{ $theme := .Site.Params.highlightjs.theme }}
+{{ $highlight_theme_css := printf "themes/highlight/%s.css" $theme }}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}{{ $highlight_theme_css }}">
+{{ else }}
+{{ $theme := "a11y-dark" }}
+{{ $highlight_theme_css := printf "themes/highlight/%s.css" $theme }}
+<link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}{{ $highlight_theme_css }}">
+{{ end }}

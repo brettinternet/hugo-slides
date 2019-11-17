@@ -9,7 +9,7 @@ const bundleDir = path.join(appRootDir, "assets", "bundle");
  * If those exist we need to build our bundles for production
  * and overwrite the development files
  */
-const filePath = path.join(bundleDir, "css", "main.js");
-if (fs.existsSync(filePath)) {
+const devFilePath = path.join(bundleDir, "css", "main.js");
+if (fs.existsSync(devFilePath)) {
   require("./setup-bundle.js");
 }

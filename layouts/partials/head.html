@@ -1,17 +1,14 @@
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <title>{{ .Title }}{{ with .Site.Params.Author.Name }} - {{ . }}{{ end }}</title>
-  {{ with $.Param "description" }}
-  <meta name="description" content="{{ . }}">
-  {{ end }}
-  {{ with .Site.Author.name }}
-  <meta name="author" content="{{ . }}">
-  {{ end }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+<title>{{ .Title }}{{ with .Site.Params.Author.Name }} - {{ . }}{{ end }}</title>
+{{ with $.Param "description" }}
+<meta name="description" content="{{ . }}">
+{{ end }}
+{{ with .Site.Author.name }}
+<meta name="author" content="{{ . }}">
+{{ end }}
 
-  <link rel="shortcut icon" type="image/x-icon" href="{{ .Site.BaseURL }}favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="{{ .Site.BaseURL }}favicon.ico" />
 
-  {{ $main_css := resources.Get "css/main.css" | fingerprint }}
-  <link rel="stylesheet" href="{{ $main_css.RelPermalink }}">
-
-</head>
+{{ $main_css := resources.Get "css/main.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $main_css.RelPermalink }}">

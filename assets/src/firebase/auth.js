@@ -1,7 +1,7 @@
 import { auth as firebaseAuthUI } from "firebaseui";
-const { baseUrl } = window.hugoPayload;
 
 export default firebase => {
+  const { baseUrl } = window.hugoPayload;
   const auth = firebase.auth();
   const ui = new firebaseAuthUI.AuthUI(auth);
   ui.start("#firebase-ui", getUiConfig());

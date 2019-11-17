@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ with.Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-{{ partial "head" . }}
-{{ partial "slides/head" . }}
+
+<head>
+  {{ partial "head" . }}
+  {{ partial "slides/head" . }}
+</head>
 
 <body>
+  {{ partial "slides/content" . }}
 
-  <div id="reveal" class="reveal">
-    <div class="slides">
-      {{ partial "content" . }}
-    </div>
-  </div>
   {{ partial "slides/corners" . }}
 
   {{ partial "slides/javascript" . }}

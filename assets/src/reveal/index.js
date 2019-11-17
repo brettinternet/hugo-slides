@@ -98,6 +98,8 @@ function camelCaseKeys(obj) {
   return newObj;
 }
 
+require("./dom");
+
 /**
  * @TODO
  * @source https://github.com/hakimel/reveal.js#pdf-export
