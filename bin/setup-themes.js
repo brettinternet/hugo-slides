@@ -2,7 +2,7 @@ const fs = require("fs");
 const fse = require("fs-extra");
 const path = require("path");
 const { execSync } = require("child_process");
-const logger = require("./logger")("setup.js");
+const logger = require("./logger")("setup-themes.js");
 
 const appRootDir = path.join(__dirname, "..");
 const nodeModules = path.join(appRootDir, "node_modules");

@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const fse = require("fs-extra");
-const logger = require("./logger")("start.js");
+const logger = require("./logger")("setup-bundle.js");
 const { execSync } = require("child_process");
 
 const appRootDir = path.join(__dirname, "..");
