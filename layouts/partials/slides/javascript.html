@@ -25,8 +25,14 @@
 {{ $main_js := resources.Get "bundle/js/main.js" | fingerprint }}
 <script type="text/javascript" src="{{ $main_js.RelPermalink }}"></script>
 
+{{ $is_mdx := eq .Page.Params.Type "mdx" }}
+{{ if $is_mdx }}
+{{ $mdx_js := resources.Get "bundle/js/mdx.js" | fingerprint }}
+<script type="text/javascript" src="{{ $mdx_js.RelPermalink }}"></script>
+{{ else }}
 {{ $reveal_js := resources.Get "bundle/js/reveal.js" | fingerprint }}
 <script type="text/javascript" src="{{ $reveal_js.RelPermalink }}"></script>
+{{ end }}
 
 {{ with .Site.Params.Firebase }}
 {{ $firebase_js := resources.Get "bundle/js/firebase.js" | fingerprint }}

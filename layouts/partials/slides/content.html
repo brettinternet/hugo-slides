@@ -1,1 +1,6 @@
+{{ $is_mdx := eq .Page.Params.Type "mdx" }}
+{{ if $is_mdx }}
+{{ partial "mdx/content" . }}
+{{ else }}
 {{ partial "reveal/content" . }}
+{{ end }}

@@ -3,4 +3,9 @@
   <h1>{{ lower .Site.Title }}</h1>
 </header>
 {{ partial "files.html" .Site.RegularPages }}
+{{ range .Site.AllPages }}
+<script>
+  console.log({{ . }});
+</script>
+{{ end }}
 {{ end }}

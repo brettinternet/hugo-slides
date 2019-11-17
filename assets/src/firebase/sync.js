@@ -1,5 +1,11 @@
+// import {
+//   setRevealSlideLocation,
+//   setRevealEventListeners
+// } from "../reveal/sync";
+
 export default firebase => {
-  const { presenterUids, slideId } = window.hugoPayload;
+  const { Reveal, hugoPayload } = window;
+  const { presenterUids, slideId } = hugoPayload;
 
   var isSynced = false;
   var isActivePresentation = false;
@@ -15,37 +21,45 @@ export default firebase => {
     OVERVIEW_HIDDEN: "overviewhidden"
   };
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      userRevealAction(getState(), Reveal.getIndices());
-    }
-  });
+  // move
+  const setRevealSlideLocation = location => {
+    Reveal.slide(location.h, location.v, location.f);
+  };
 
-  Reveal.addEventListener("slidechanged", function(_event) {
-    userRevealAction(getState(), Reveal.getIndices()); // event.timeStamp?
-  });
+  if (Reveal) {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        userSlideAction(getRevealState(), Reveal.getIndices());
+      }
+    });
 
-  Reveal.addEventListener("fragmentshown", function(_event) {
-    userRevealAction(getState(), Reveal.getIndices());
-  });
+    Reveal.addEventListener("slidechanged", function(_event) {
+      userSlideAction(getRevealState(), Reveal.getIndices()); // event.timeStamp?
+    });
 
-  Reveal.addEventListener("fragmenthidden", function(_event) {
-    userRevealAction(getState(), Reveal.getIndices());
-  });
+    Reveal.addEventListener("fragmentshown", function(_event) {
+      userSlideAction(getRevealState(), Reveal.getIndices());
+    });
 
-  Reveal.addEventListener("overviewhidden", function(_event) {
-    userRevealAction(getState(), Reveal.getIndices());
-  });
+    Reveal.addEventListener("fragmenthidden", function(_event) {
+      userSlideAction(getRevealState(), Reveal.getIndices());
+    });
 
-  Reveal.addEventListener("overviewshown", function(_event) {
-    userRevealAction(getState(), Reveal.getIndices());
-  });
+    Reveal.addEventListener("overviewhidden", function(_event) {
+      userSlideAction(getRevealState(), Reveal.getIndices());
+    });
 
-  window.addEventListener("beforeunload", function(_event) {
-    if (window.Reveal && isAuthorizedPresenter()) {
-      killPresentation();
-    }
-  });
+    Reveal.addEventListener("overviewshown", function(_event) {
+      userSlideAction(getRevealState(), Reveal.getIndices());
+    });
+
+    window.addEventListener("beforeunload", function(_event) {
+      if (window.Reveal && isAuthorizedPresenter()) {
+        killPresentation();
+      }
+    });
+  }
+  // /move
 
   presentationRef.on("value", handleActivePresentationValues);
 
@@ -81,7 +95,7 @@ export default firebase => {
    * @param {Object} location.v Vertical positioning (starts at 0)
    * @param {Object} location.f Fragment positioning within a slide (starts at -1)
    */
-  function emitRevealAction(state, location) {
+  function emitSlideAction(state, location) {
     presentationRef.set({
       state: state,
       location: {
@@ -93,9 +107,9 @@ export default firebase => {
     });
   }
 
-  function userRevealAction(state, location) {
+  function userSlideAction(state, location) {
     if (isAuthorizedPresenter()) {
-      emitRevealAction(state, location);
+      emitSlideAction(state, location);
     }
     // if (/** user proposed action */ false) {
     //   stopSync();
@@ -133,28 +147,32 @@ export default firebase => {
     return slideId;
   }
 
-  function getState() {
+  function getRevealState() {
     return Reveal.isOverview() ? states.OVERVIEW_SHOWN : states.OVERVIEW_HIDDEN;
   }
 
   function setSlideState(state) {
-    switch (state) {
-      case states.OVERVIEW_SHOWN:
-        if (!Reveal.isOverview()) {
-          Reveal.toggleOverview(true);
-        }
-        break;
-      case states.OVERVIEW_HIDDEN:
-        if (Reveal.isOverview()) {
-          Reveal.toggleOverview(false);
-        }
-        break;
+    if (Reveal) {
+      switch (state) {
+        case states.OVERVIEW_SHOWN:
+          if (!Reveal.isOverview()) {
+            Reveal.toggleOverview(true);
+          }
+          break;
+        case states.OVERVIEW_HIDDEN:
+          if (Reveal.isOverview()) {
+            Reveal.toggleOverview(false);
+          }
+          break;
+      }
     }
   }
 
   function setSlideLocation(location) {
     if (!location) throw Error("Unable to identify location from sync.");
-    Reveal.slide(location.h, location.v, location.f);
+    if (Reveal) {
+      setRevealSlideLocation(location);
+    }
   }
 
   function killPresentation() {
