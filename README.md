@@ -18,11 +18,13 @@ The [JAMstack](https://jamstack.org) is the simplest method to host and maintain
 - Plugin ideas
   - [x] Add serverless slide sync via Firebase and presenter authentication
     - Logging into multiple clients is permitted. For example, you could use a phone as a remote or to read presenter notes as slides come up.
+    - [ ] Sync additional actions like pausing (will require Reveal library modification), zoom.js actions
   - [ ] Plugin: Question/comment submission to Firebase
 - [x] Improve features of the Reveal.js notes plugin view
   - Improved responsiveness
   - Buttons to modify font size for note text
   - Time div should be a fixed header while notes body scrolls
+  - [ ] Add notes-only view touch swiping for slide changes on mobile (or next slide button for spacebar-equivalent action)
 - [ ] Make slide types configurable
   - [ ] Add [code-surfer](https://github.com/pomber/code-surfer) slide type
 

@@ -7,10 +7,12 @@ import marked from "marked";
   const notesValue = document.querySelector(".speaker-controls-notes .value");
 
   const lessFontsizeButton = document.getElementById("less-fontsize");
-  lessFontsizeButton.onclick = decreaseFontSize;
+  lessFontsizeButton.onmouseup = decreaseFontSize;
+  lessFontsizeButton.ontouchend = decreaseFontSize;
 
   const moreFontsizeButton = document.getElementById("more-fontsize");
-  moreFontsizeButton.onclick = increaseFontSize;
+  moreFontsizeButton.onmouseup = increaseFontSize;
+  moreFontsizeButton.ontouchend = increaseFontSize;
 
   const fontStep = 2;
   const fontSizeFloor = 7;

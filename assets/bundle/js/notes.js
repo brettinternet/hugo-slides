@@ -1711,9 +1711,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (function () {
   var notesValue = document.querySelector(".speaker-controls-notes .value");
   var lessFontsizeButton = document.getElementById("less-fontsize");
-  lessFontsizeButton.onclick = decreaseFontSize;
+  lessFontsizeButton.onmouseup = decreaseFontSize;
+  lessFontsizeButton.ontouchend = decreaseFontSize;
   var moreFontsizeButton = document.getElementById("more-fontsize");
-  moreFontsizeButton.onclick = increaseFontSize;
+  moreFontsizeButton.onmouseup = increaseFontSize;
+  moreFontsizeButton.ontouchend = increaseFontSize;
   var fontStep = 2;
   var fontSizeFloor = 7;
 
@@ -2228,7 +2230,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "16300" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43941" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
