@@ -1,6 +1,6 @@
-# Hugo Slides
+_This project is archived. See [brettinternet/slides](https://github.com/brettinternet/slides) for the next phase of this work._
 
-[![Build Status](https://travis-ci.org/brettinternet/hugo-slides.svg?branch=master)](https://travis-ci.org/brettinternet/hugo-slides)
+# Hugo Slides
 
 A simple directory for your Reveal.js markdown slides. [View demo](https://brettinternet.github.io/hugo-slides/)
 
